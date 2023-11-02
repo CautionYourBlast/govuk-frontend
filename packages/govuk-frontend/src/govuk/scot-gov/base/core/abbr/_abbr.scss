@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    ABBREVIATIONS
+    Improved display of abbreviation styling with better readability than browser default
+\*------------------------------------*/
+
+/// [1] only apply this if there is a title attribute
+
+abbr, acronym {
+    &[title] { /// [1]
+        text-decoration: underline dotted;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 1px;
+    }
+}

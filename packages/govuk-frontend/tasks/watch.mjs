@@ -81,6 +81,16 @@ export const watch = (options) =>
     ),
 
     /**
+     * Component fixtures watcher
+     */
+    task.name('compile:fixtures watch', () =>
+      gulp.watch(
+        [join(options.srcPath, 'govuk/scot-gov/components/*/*.yaml')],
+        fixtures(options)
+      )
+    ),
+
+    /**
      * Component template watcher
      */
     task.name('copy:templates watch', () =>

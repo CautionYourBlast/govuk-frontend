@@ -1,0 +1,64 @@
+@mixin ds_chevron($orientation: down, $size: 1em) {
+    $chevron-width: #{$size * 0.25};
+
+    content: '';
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0px 0px $chevron-width $chevron-width;
+    border-top-color: transparent;
+    display: inline-block;
+    height: $size;
+    width: $size;
+
+    // $spritename: 'expand_more';
+    @if $orientation == down {
+        transform: rotate(-45deg);
+    } @else if $orientation == up {
+        transform: rotate(-225deg);
+    } @else if $orientation == left {
+        transform: rotate(-315deg);
+    } @else if $orientation == right {
+        transform: rotate(-135deg);
+    }
+}
+
+
+
+
+/// Icon mask
+///
+/// @deprecated icons displayed this way do not render in Windows
+/// "High Contrast" mode
+///
+/// Adds mask-image properties for a provided image URL
+///
+/// @param {string} $url - url of the image to be masked
+///
+/// @example scss
+///   .warning-icon {
+///     @include ds_icon-mask('/path/to/my/icon')
+///   }
+
+@mixin ds_icon-mask($url) {
+    /// for IE11 support, use image without clip path
+    background-image: url($url);
+
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+        background-color: currentColor;
+        background-image: none;
+        -webkit-mask-image: url($url);
+        mask-image: url($url);
+    }
+}
+
+
+
+
+/// legacy non-prefixed names
+@mixin chevron($orientation: down, $size: 1em) {
+    @include ds_chevron($orientation, $size);
+}
+
+@mixin icon-mask($url) {
+    @include ds_icon-mask($url);
+}

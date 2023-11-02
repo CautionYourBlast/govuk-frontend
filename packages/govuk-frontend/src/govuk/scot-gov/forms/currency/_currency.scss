@@ -1,0 +1,36 @@
+/*------------------------------------*\
+    CURRENCY WRAPPER
+\*------------------------------------*/
+
+$input-height: 48px;
+
+.ds_currency-wrapper {
+    position: relative;
+
+    &::before {
+        @include ds_large-size;
+        content: '£';
+        height: $input-height;
+        font-weight: $bold;
+        line-height: $input-height !important;
+        pointer-events: none;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: $input-height;
+    }
+
+    &[data-symbol]::before {
+        content: attr(data-symbol);
+    }
+
+    & > .ds_input {
+        padding-left: 40px;
+    }
+
+    & > .ds_input:focus {
+        padding-left: 39px;
+    }
+
+
+}

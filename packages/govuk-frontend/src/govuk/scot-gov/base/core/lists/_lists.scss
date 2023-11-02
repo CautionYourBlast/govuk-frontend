@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    LISTS
+\*------------------------------------*/
+
+ul, 
+ol, 
+dd {
+    @include ds_last-child-no-margin;
+    margin-left: px-to-rem(20px);
+}
+
+dd,
+ul ul,
+ol ol,
+ol ul,
+ul ol {
+    @include ds_responsive-margin(1, top);
+    @include ds_responsive-margin(1, bottom);
+}
+
+li {
+    @include ds_responsive-margin(1, bottom);
+}
+
+dt {
+    font-weight: $bold;
+}
+
+ol {
+    list-style-type: numeric;
+    margin-left: px-to-rem(24px);
+}
+
+ol ol {
+    list-style-type: lower-alpha;
+}
+
+ol ol ol {
+    list-style-type: lower-roman;
+}

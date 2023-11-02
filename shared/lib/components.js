@@ -59,6 +59,22 @@ const getComponentFixtures = async (componentName, packageOptions) => {
   )
 }
 
+
+/**
+ * Load single component fixtures
+ *
+ * @param {string} componentName - Component name
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
+ * @returns {Promise<ComponentFixtures>} Component data
+ */const getScotGovComponentFixtures = async (componentName, packageOptions) => {
+  return require(
+    join(
+      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+      `scot-gov/components/${componentName}/fixtures.json`
+    )
+  )
+}
+
 /**
  * Load all components' data
  *
@@ -70,6 +86,21 @@ const getComponentsFixtures = async (packageOptions) => {
   return Promise.all(
     componentNames.map((componentName) =>
       getComponentFixtures(componentName, packageOptions)
+    )
+  )
+}
+
+/**
+ * Load all components' data
+ *
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
+ * @returns {Promise<(ComponentFixtures)[]>} Components' data
+ */
+const getScotGovComponentsFixtures = async (packageOptions) => {
+  const componentNames = await getScotGovComponentNames(packageOptions)
+  return Promise.all(
+    componentNames.map((componentName) =>
+      getScotGovComponentFixtures(componentName, packageOptions)
     )
   )
 }
@@ -90,6 +121,21 @@ const getComponentFiles = (componentName = '*', packageOptions) =>
   )
 
 /**
+ * Get component files
+ *
+ * @param {string} [componentName] - Component name
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
+ * @returns {Promise<string[]>} Component files
+ */
+const getScotGovComponentFiles = (componentName = '*', packageOptions) =>
+  getListing(
+    join(
+      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+      `scot-gov/components/${componentName}/**/*`
+    )
+  )
+
+/**
  * Get component names
  *
  * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
@@ -105,6 +151,21 @@ async function getComponentNames(packageOptions) {
 }
 
 /**
+ * Get component names
+ *
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
+ * @returns {Promise<string[]>} Component names
+ */
+async function getScotGovComponentNames(packageOptions) {
+  return getDirectories(
+    join(
+      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+      'scot-gov/components/'
+    )
+  )
+}
+
+/**
  * Get component names, filtered
  *
  * @param {(componentName: string, componentFiles: string[]) => boolean} filter - Component names array filter
@@ -114,6 +175,23 @@ async function getComponentNames(packageOptions) {
 async function getComponentNamesFiltered(filter, packageOptions) {
   const componentNames = await getComponentNames(packageOptions)
   const componentFiles = await getComponentFiles('*', packageOptions)
+
+  // Apply component names filter
+  return componentNames.filter((componentName) =>
+    filter(componentName, componentFiles)
+  )
+}
+
+/**
+ * Get component names, filtered
+ *
+ * @param {(componentName: string, componentFiles: string[]) => boolean} filter - Component names array filter
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
+ * @returns {Promise<string[]>} Component names
+ */
+async function getScotGovComponentNamesFiltered(filter, packageOptions) {
+  const componentNames = await getScotGovComponentNames(packageOptions)
+  const componentFiles = await getScotGovComponentFiles('*', packageOptions)
 
   // Apply component names filter
   return componentNames.filter((componentName) =>
@@ -144,6 +222,22 @@ async function getExamples(componentName, packageOptions) {
   return examples
 }
 
+async function getScotGovExamples(componentName, packageOptions) {
+  const { fixtures } = await getScotGovComponentFixtures(componentName, packageOptions)
+
+  /** @type {{ [name: string]: MacroRenderOptions }} */
+  const examples = {}
+
+  for (const fixture of fixtures) {
+    examples[fixture.name] = {
+      context: fixture.options,
+      fixture
+    }
+  }
+
+  return examples
+}
+
 /**
  * Render component HTML
  *
@@ -153,8 +247,15 @@ async function getExamples(componentName, packageOptions) {
  */
 function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
-  const macroPath = `govuk/components/${componentName}/macro.njk`
+  let macroPath;
 
+  if (componentName.startsWith('scot-')) {
+    macroPath = `govuk/scot-gov/components/${componentName}/macro.njk`
+
+  } else {
+    macroPath = `govuk/components/${componentName}/macro.njk`
+  }
+  console.log(`rendering macroPath: ${macroPath}`)
   return renderMacro(macroName, macroPath, options)
 }
 
@@ -176,6 +277,8 @@ function renderMacro(macroName, macroPath, options) {
   macroString += options?.callBlock
     ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
     : `{{- ${macroName}(${paramsFormatted}) -}}`
+
+  console.log(`rendering macroString: ${macroPath}, ${macroName}, ${macroString}`);
 
   return renderString(macroString, options)
 }
@@ -264,6 +367,12 @@ module.exports = {
   getComponentNames,
   getComponentNamesFiltered,
   getExamples,
+  getScotGovComponentFixtures,
+  getScotGovComponentsFixtures,
+  getScotGovComponentFiles,
+  getScotGovComponentNames,
+  getScotGovComponentNamesFiltered,
+  getScotGovExamples,
   nunjucksEnv,
   render,
   renderMacro,

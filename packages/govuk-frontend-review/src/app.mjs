@@ -5,7 +5,10 @@ import {
   getComponentsFixtures,
   getComponentNames,
   getComponentNamesFiltered,
-  render
+  render,
+  getScotGovComponentsFixtures,
+  getScotGovComponentNames,
+  getScotGovComponentNamesFiltered
 } from '@govuk-frontend/lib/components'
 import { filterPath, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
@@ -28,6 +31,9 @@ export default async () => {
     componentsFixtures,
     componentNames,
     componentNamesWithJavaScript,
+    scotGovComponentsFixtures,
+    scotGovComponentNames,
+    scotGovComponentNamesWithJavaScript,
     exampleNames,
     fullPageExamples
   ] = await Promise.all([
@@ -43,7 +49,20 @@ export default async () => {
       packageOptions
     ),
 
+    getScotGovComponentsFixtures(packageOptions),
+
+    // Components list
+    getScotGovComponentNames(packageOptions),
+
+    // Components list (with JavaScript only)
+    getScotGovComponentNamesFiltered(
+      (componentName, componentFiles) =>
+        componentFiles.some(filterPath([`**/${componentName}.mjs`])),
+      packageOptions
+    ),
+
     getExampleNames(),
+
     getFullPageExamples()
   ])
 
@@ -87,6 +106,8 @@ export default async () => {
     res.render('index', {
       componentNames,
       componentNamesWithJavaScript,
+      scotGovComponentNames,
+      scotGovComponentNamesWithJavaScript,
       exampleNames,
       fullPageExamples
     })
@@ -94,9 +115,18 @@ export default async () => {
 
   // Whenever the route includes a :componentName parameter, read the component fixtures
   app.param('componentName', function (req, res, next, componentName) {
-    res.locals.componentFixtures = componentsFixtures.find(
-      ({ component }) => component === componentName
-    )
+    if (req.originalUrl.includes('scot-')) {
+      res.locals.componentFixtures = scotGovComponentsFixtures.find(
+        ({ component }) => component === componentName
+      )
+      console.log(`setting scot-gov component fixtures for ${componentName} as ${JSON.stringify(res.locals.componentFixtures)}`);
+
+    } else {
+      console.log(`setting gov-uk component fixtures for ${componentName}`);
+      res.locals.componentFixtures = componentsFixtures.find(
+        ({ component }) => component === componentName
+      )
+    }
     next()
   })
 
@@ -105,7 +135,7 @@ export default async () => {
     res.locals.componentsFixtures = componentsFixtures.map(
       (componentFixtures) => {
         const defaultFixture = componentFixtures.fixtures.find(
-          ({ name }) => name === 'default'
+          ({name}) => name === 'default'
         )
 
         return {
@@ -122,10 +152,33 @@ export default async () => {
         res.send(html)
       }
     })
-  })
+  });
+
+  app.get('/scot-gov-components/all', function (req, res, next) {
+    res.locals.componentsFixtures = scotGovComponentsFixtures.map(
+      (componentFixtures) => {
+        const defaultFixture = componentFixtures.fixtures.find(
+          ({name}) => name === 'default'
+        )
+
+        return {
+          ...componentFixtures,
+          fixtures: [defaultFixture]
+        }
+      }
+    )
+
+    res.render('all-components', function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  });
 
   // Component 'README' page
-  app.get('/components/:componentName', function (req, res, next) {
+  app.get('/:prefix(components|scot-gov-components)/:componentName', function (req, res, next) {
     // make variables available to nunjucks template
     res.locals.componentName = req.params.componentName
 
@@ -140,7 +193,7 @@ export default async () => {
 
   // Component example preview
   app.get(
-    '/components/:componentName/:exampleName?/preview',
+    '/:prefix(components|scot-gov-components)/:componentName/:exampleName?/preview',
     function (req, res, next) {
       // Find the data for the specified example (or the default example)
       const componentName = req.params.componentName
@@ -148,6 +201,7 @@ export default async () => {
 
       /** @type {ComponentFixtures | undefined} */
       const componentFixtures = res.locals.componentFixtures
+      console.log(`componentFixtures for preview: ${JSON.stringify(componentFixtures)}, component name: ${componentName}, example name: ${exampleName}`);
 
       const fixture = componentFixtures?.fixtures.find(
         (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName

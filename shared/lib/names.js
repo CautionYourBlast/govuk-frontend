@@ -40,6 +40,9 @@ function kebabCaseToCamelCase(value) {
  * @returns {string} The name of its corresponding Nunjucks macro
  */
 function componentNameToMacroName(componentName) {
+  if (componentName.startsWith("scot-")) {
+    return kebabCaseToCamelCase(`${componentName}`)
+  }
   return kebabCaseToCamelCase(`govuk-${componentName}`)
 }
 

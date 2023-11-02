@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    SMALL
+\*------------------------------------*/
+
+small,
+.ds_small {
+    @include ds_small-size;
+}
+
+.ds_tiny {
+    @include ds_tiny-size;
+}

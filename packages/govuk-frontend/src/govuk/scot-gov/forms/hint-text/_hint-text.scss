@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    HINT TEXT
+\*------------------------------------*/
+
+.ds_hint-text {
+    color: $ds_colour__text--secondary;
+    margin-bottom: 16px;
+
+    > * {
+        margin-bottom: 8px;
+    }
+}

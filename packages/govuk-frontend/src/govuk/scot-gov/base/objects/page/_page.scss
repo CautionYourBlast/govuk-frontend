@@ -1,0 +1,91 @@
+/*------------------------------------*\
+    PAGE SETUP
+    anchor footer to bottom of the viewport on short pages
+\*------------------------------------*/
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+.ds_page {
+    min-height: calc(100vh - 360px);
+    margin-bottom: 360px;
+}
+
+.ds_site-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@supports (display: grid) {
+    .ds_page {
+        display: grid;
+        margin-bottom: 0;
+        min-height: 100vh;
+        grid-template:
+            'page-top' auto
+            'page-middle' 1fr
+            'page-bottom' auto;
+
+        &__top {
+            grid-area: page-top;
+        }
+
+        &__middle {
+            grid-area: page-middle;
+        }
+
+        &__bottom {
+            grid-area: page-bottom;
+        }
+    }
+
+    .ds_site-footer {
+        position: static;
+    }
+}
+
+.ds_page__middle {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+
+
+
+/*------------------------------------*\
+    PRE FOOTER BACKGROUND
+    for when a block immediately preceding the footer has a non-white background
+\*------------------------------------*/
+
+.ds_page__middle:has(.ds_pre-footer-background) {
+    padding-bottom: 0;
+}
+
+.ds_page__middle.js-pre-footer-background {
+    padding-bottom: 0;
+}
+
+.ds_pre-footer-background {
+    padding-bottom: 4rem;
+}
+
+
+
+
+/*------------------------------------*\
+    CATEGORY PAGE LAYOUT
+\*------------------------------------*/
+
+// todo: Does this belong here? Feels like no.
+.category-lower,
+.ds_category-lower {
+    background: $ds_colour__grey--lighter;
+    border-top: 1px solid $ds_colour__grey--light;
+    margin-top: -1px;
+}

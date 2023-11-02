@@ -16,8 +16,10 @@ export async function generateFixtures(pattern, { srcPath, destPath }) {
     cwd: srcPath
   })
 
+
   // Loop component data paths
   const fixtures = componentDataPaths.map(async (componentDataPath) => {
+
     const fixture = await generateFixture(componentDataPath, { srcPath })
 
     // Write to destination
@@ -95,6 +97,7 @@ async function generateFixture(componentDataPath, options) {
 
   // Nunjucks template
   const componentName = basename(dirname(componentDataPath))
+  console.log(`generating fixture for component ${componentName}, component data path: ${componentDataPath}`);
 
   // Loop examples
   const fixtures = json.examples.map(
@@ -102,22 +105,27 @@ async function generateFixture(componentDataPath, options) {
      * @param {ComponentExample} example - Component example
      * @returns {Promise<ComponentFixture>} Component fixture
      */
-    async (example) => ({
-      name: example.name,
-      options: example.options,
-      hidden: Boolean(example.hidden),
 
-      // Add defaults to optional fields
-      description: example.description ?? '',
-      previewLayoutModifiers: example.previewLayoutModifiers ?? [],
+    async (example) => {
+      return ({
+          name: example.name,
+          options: example.options,
+          hidden: Boolean(example.hidden),
 
-      // Render Nunjucks example
-      html: render(componentName, {
-        context: example.options,
-        env
-      }).trim()
-    })
+          // Add defaults to optional fields
+          description: example.description ?? '',
+          previewLayoutModifiers: example.previewLayoutModifiers ?? [],
+
+          // Render Nunjucks example
+          html: render(componentName, {
+            context: example.options,
+            env
+          }).trim()
+        })
+    }
   )
+
+  console.log(`got fixtures for component ${componentName}: ${JSON.stringify(fixtures)}`);
 
   return {
     component: componentName,
