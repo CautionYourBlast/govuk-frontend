@@ -1,5 +1,5 @@
 import page from './base/objects/page/page';
-import Accordion from './components/accordion/accordion';
+import Accordion from './components/scot-gov-accordion/scot-gov-accordion.mjs';
 import AspectBox from './components/aspect-box/aspect-box-fallback';
 import Autocomplete from './components/autocomplete/autocomplete';
 import BackToTop from './components/back-to-top/back-to-top';

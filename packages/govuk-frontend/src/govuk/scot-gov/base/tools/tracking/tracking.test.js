@@ -3,7 +3,7 @@ const testObj = {};
 jasmine.getFixtures().fixturesPath = 'base/src/';
 
 import Tracking from './tracking';
-import Accordion from '../../../components/accordion/accordion';
+import Accordion from '../../../components/scot-gov-accordion/scot-gov-accordion.mjs';
 import Autocomplete from "../../../components/autocomplete/autocomplete";
 import SideNavigation from '../../../components/side-navigation/side-navigation';
 
