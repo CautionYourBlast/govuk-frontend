@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    QUESTION
+\*------------------------------------*/
+
+.ds_question {
+    &--error {
+        border-left: 4px solid $ds_colour__state--negative;
+        padding-left: 20px;
+    }
+
+    &__message,
+    &__error-message {
+        @include ds_responsive-margin(2, bottom);
+    }
+
+    &__error-message {
+        color: $ds_colour__state--negative;
+        font-weight: $bold;
+    }
+}

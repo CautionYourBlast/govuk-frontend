@@ -1,0 +1,46 @@
+/*------------------------------------*\
+    PHASE BANNER
+\*------------------------------------*/
+
+.ds_phase-banner {
+  @include ds_small-size;
+  @include ds_responsive-padding(2, top);
+  @include ds_responsive-padding(2, bottom);
+  background: $ds_colour__grey--light;
+  clear: both;
+
+  &.no-bottom-margin {
+      margin-bottom: 0;
+  }
+
+  &__content {
+      display: table;
+      margin-bottom: 0;
+  }
+
+  &__tag {
+      @include ds_responsive-margin(2, right);
+  }
+
+  &__text {
+      display: table-cell;
+  }
+}
+
+@supports (display: flex) {
+  .ds_phase-banner {
+
+      &__content {
+          align-items: baseline;
+          display: flex;
+
+          &--stacked {
+              flex-direction: column;
+
+              > *:not(:last-child) {
+                  @include ds_responsive-margin(1, bottom);
+              }
+          }
+      }
+  }
+}

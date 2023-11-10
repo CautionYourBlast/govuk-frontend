@@ -1,0 +1,47 @@
+{% from "../scot-gov-error-message/macro.njk" import scotGovErrorMessage -%}
+{% from "../scot-gov-hint/macro.njk" import scotGovHint %}
+{% from "../scot-gov-label/macro.njk" import scotGovLabel %}
+
+{#- a record of other elements that we need to associate with the input using
+  aria-describedby – for example hints or error messages -#}
+{% set describedBy = params.describedBy if params.describedBy else "" %}
+<div class="ds_question {%- if params.errorMessage %} ds_question--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+  <div class="ds_input-wrapper {%- if params.errorMessage %} ds_input-wrapper--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+    {{ scotGovLabel({
+      html: params.label.html,
+      text: params.label.text,
+      classes: params.label.classes,
+      isPageHeading: params.label.isPageHeading,
+      attributes: params.label.attributes,
+      for: params.id
+    }) | indent(2) | trim }}
+  {% if params.hint %}
+    {% set hintId = params.id + '-hint' %}
+    {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+    {{ scotGovHint({
+      id: hintId,
+      classes: params.hint.classes,
+      attributes: params.hint.attributes,
+      html: params.hint.html,
+      text: params.hint.text
+    }) | indent(2) | trim }}
+  {% endif %}
+  {% if params.errorMessage %}
+    {% set errorId = params.id + '-error' %}
+    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+    {{ scotGovErrorMessage({
+          id: errorId,
+          classes: params.errorMessage.classes,
+          attributes: params.errorMessage.attributes,
+          html: params.errorMessage.html,
+          text: params.errorMessage.text,
+          visuallyHiddenText: params.errorMessage.visuallyHiddenText
+        }) | indent(2) | trim }}
+  {% endif %}
+    <input class="ds_input {{- ' ds_input--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}"
+    {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
+    {%- if params.disabled %} disabled{% endif %}
+    {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+    {%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
+    {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ params.value }}</input>
+  </div>

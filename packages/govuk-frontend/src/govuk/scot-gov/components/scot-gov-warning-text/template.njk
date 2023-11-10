@@ -1,0 +1,9 @@
+<div class="ds_warning-text {{- ' ' + params.classes if params.classes}}"
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor -%}
+  >
+  <span class="ds_warning-text__icon" aria-hidden="true">!</span>
+  <strong class="ds_warning-text__text">
+    <span class="ds_visually-hidden">{{ params.iconFallbackText | default("Warning", true) }}</span>
+    {{ params.html | safe if params.html else params.text }}
+  </strong>
+</div>

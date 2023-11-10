@@ -1,0 +1,173 @@
+/*------------------------------------*\
+    NOTIFICATION BANNER
+\*------------------------------------*/
+
+// modifiable vars
+$notification-banner__background-colour: $ds_colour__grey--dark !default;
+$notification-banner__background-colour--success: $ds_colour__state--positive !default;
+$notification-banner__colour-icon-colour: $ds_colour__yellow !default;
+
+// fixed vars
+$notification-banner__close-padding: 4px;
+$notification-banner__icon-padding: $notification-banner__close-padding;
+
+.ds_notification {
+    background: $notification-banner__background-colour;
+    color: $ds_colour__white;
+    margin-bottom: 1px;
+
+    &--success {
+        background: $notification-banner__background-colour--success;
+    }
+
+    /// [1] compensate for bottom margin on parent
+    &__content {
+        padding: 16px 0 15px; /// [1]
+        position: relative;
+
+        @include ds_last-child-no-margin;
+
+        &--has-close {
+            padding-right: 40px;
+        }
+    }
+
+    &__text {
+        display: inline-block;
+        margin-right: 16px;
+
+        @include ds_last-child-no-margin;
+    }
+
+    &__actions {
+        margin-top: 32px;
+        text-align: center;
+
+        > * {
+            margin-bottom: 16px;
+            margin-top: 0;
+            white-space: nowrap;
+            width: 100%;
+        }
+    }
+
+    // specificity hack
+    .ds_notification__actions {
+        margin-bottom: -16px;
+    }
+
+    &__icon {
+        display: block;
+        position: absolute;
+        height: 32px;
+        line-height: 0;
+        margin-left: -4px;
+        margin-top: -4px;
+        padding: 2px;
+        width: 32px;
+
+        + .ds_notification__text {
+            margin-left: 40px;
+
+            @include ds_media-query(medium) {
+                margin-left: 64px;
+            }
+        }
+
+        &--colour {
+            color: $notification-banner__colour-icon-colour;
+        }
+
+        &--inverse {
+            background-color: $ds_colour__white;
+            border-radius: 100px;
+            color: $notification-banner__background-colour;
+        }
+
+        &--inverse.ds_notification__icon--colour {
+            background-color: $notification-banner__colour-icon-colour;
+        }
+    }
+
+    &__close {
+        background: transparent;
+        border-width: 0;
+        box-sizing: content-box;
+        color: currentColor;
+        // display: none;
+        font-size: $small-size--fixed;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        right: -8px;
+        top: 8px;
+        width: 40px;
+
+        min-height: 0;
+        min-width: 0;
+
+        &:focus {
+            background-color: $ds_colour__button--focus__background;
+            box-shadow: 0 $link__border-width $ds_colour__link--focus__shadow;
+            color: $ds_colour__button--focus;
+            outline: 0;
+
+            transition-duration: 0s;
+        }
+
+        &:hover:not(:focus) {
+            background-color: transparent;
+            color: currentColor;
+            outline: 2px solid currentColor;
+        }
+
+        > * {
+            pointer-events: none;
+        }
+    }
+}
+
+@include ds_media-query(medium) {
+    .ds_notification__close {
+        top: 12px;
+    }
+
+    .ds_notification__icon {
+        margin-top: 0;
+    }
+
+    .ds_notification__actions {
+        text-align: left;
+
+        > * {
+            width: auto;
+        }
+
+        > *:not(last-child) {
+            margin-right: 16px;
+        }
+    }
+}
+
+@supports(display: flex) {
+    @include ds_media-query(medium) {
+        .ds_notification__actions {
+            align-items: center;
+            display: inline-flex;
+            flex-wrap: wrap;
+            width: auto;
+
+            > * {
+                flex-basis: auto;
+                flex-grow: initial;
+            }
+        }
+    }
+}
+
+.js-enabled {
+    .ds_notification__close {
+        display: block;
+    }
+}

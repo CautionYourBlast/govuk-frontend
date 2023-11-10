@@ -1,0 +1,46 @@
+/*------------------------------------*\
+    DETAILS
+\*------------------------------------*/
+
+$details-border-width: 4px;
+$details-icon-size: #{1em * 8px / $root-font-size--medium};
+
+.ds_details {
+    @include ds_block-margins;
+}
+
+.ds_details__summary {
+    @include ds_link;
+    @include ds_responsive-padding(4, left);
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+
+    &::before {
+        background-color: currentColor;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+        content: '';
+        display: block;
+        height: calc(#{$details-icon-size} * 2);
+        left: 0.25em;
+        position: absolute;
+        top: calc(50% - #{$details-icon-size} + 1px); // 1px magic number for optical alignment in preference to mathematic alignment
+        width: $details-icon-size;
+
+        @media (prefers-reduced-motion: no-preference) {
+            transition: transform $transition-in-time;
+        }
+    }
+}
+
+.ds_details[open] .ds_details__summary::before {
+    transform: rotate(90deg);
+}
+
+.ds_details__text {
+    border-left: $details-border-width solid #b3b3b3;
+    box-sizing: border-box;
+    @include ds_responsive-margin(2, top);
+    @include ds_responsive-padding(1);
+    @include ds_responsive-padding(4, left, false, calc(#{$details-border-width} * -1));
+}

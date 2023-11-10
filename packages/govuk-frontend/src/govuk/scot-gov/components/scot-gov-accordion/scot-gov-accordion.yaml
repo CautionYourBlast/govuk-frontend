@@ -105,7 +105,7 @@ examples:
             text: Section B
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 2</li>
               </ul>
 
@@ -119,19 +119,19 @@ examples:
             text: Additional description
           content:
             html: |
-              <p class="govuk-body">
+              <p class="ds_body">
                 We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
               </p>
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 1</li>
               </ul>
         - heading:
             text: Test 2
           summary:
-            html: <span class="govuk-!-font-weight-regular">Additional description (wrapped in span)</span>
+            html: <span class="ds_!-font-weight-regular">Additional description (wrapped in span)</span>
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 2</li>
               </ul>
 
@@ -145,16 +145,16 @@ examples:
             text: Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem.
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 1</li>
               </ul>
         - heading:
             text: Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum.
           summary:
-            html: <span class="govuk-!-font-weight-regular">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>
+            html: <span class="ds_!-font-weight-regular">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 2</li>
               </ul>
 
@@ -167,14 +167,14 @@ examples:
           expanded: true
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 1</li>
               </ul>
         - heading:
             text: Section B
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 2</li>
               </ul>
 
@@ -187,7 +187,7 @@ examples:
           expanded: true
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 1</li>
               </ul>
         - heading:
@@ -195,7 +195,7 @@ examples:
           expanded: true
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 2</li>
               </ul>
 
@@ -206,11 +206,11 @@ examples:
         - heading:
             text: Section A
           content:
-            html: <a class="govuk-link" href="#">Link A</a>
+            html: <a class="ds_link" href="#">Link A</a>
         - heading:
             text: Section B
           content:
-            html: <a class="govuk-link" href="#">Link B</a>
+            html: <a class="ds_link" href="#">Link B</a>
 
   - name: with translations
     options:
@@ -230,7 +230,7 @@ examples:
             text: Section B
           content:
             html: |
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="ds_list ds_list--bullet">
                 <li>Example item 2</li>
               </ul>
 
