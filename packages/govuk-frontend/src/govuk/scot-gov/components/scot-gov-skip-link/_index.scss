@@ -16,15 +16,15 @@
 }
 
 .ds_skip-links__link {
-  clip: rect(1px 1px 1px 1px);
+  clip: auto;
   display: block;
-  height: 1px;
+  height: auto;
   left: 10px;
   overflow: hidden;
   padding: 7px;
   position: absolute;
   top: 10px;
-  width: 1px;
+  width: auto;
 
   &:focus {
       clip: auto;

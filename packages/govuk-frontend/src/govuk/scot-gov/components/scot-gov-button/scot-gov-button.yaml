@@ -110,12 +110,12 @@ examples:
     options:
       name: secondary
       text: Secondary button
-      classes: govuk-button--secondary
+      classes: ds_button--secondary
   - name: secondary disabled
     options:
       name: secondary
       text: Secondary button disabled
-      classes: govuk-button--secondary
+      classes: ds_button--secondary
       disabled: true
   - name: secondary link
     description: A link button for secondary actions
@@ -123,18 +123,18 @@ examples:
       name: secondary
       text: Secondary button
       href: '/'
-      classes: govuk-button--secondary
+      classes: ds_button--secondary
   - name: warning
     description: A button for actions that need a warning
     options:
       name: Warning
       text: Warning button
-      classes: govuk-button--warning
+      classes: ds_button--warning
   - name: warning disabled
     options:
       name: warning
       text: Warning button disabled
-      classes: govuk-button--warning
+      classes: ds_button--warning
       disabled: true
   - name: warning link
     description: A link button for actions that need a warning
@@ -142,7 +142,7 @@ examples:
       name: Warning
       text: Warning button
       href: '/'
-      classes: govuk-button--warning
+      classes: ds_button--warning
   - name: inverse
     description: A button that appears on dark backgrounds
     previewLayoutModifiers:
@@ -150,14 +150,14 @@ examples:
     options:
       name: Inverse
       text: Inverse button
-      classes: govuk-button--inverse
+      classes: ds_button--inverse
   - name: inverse disabled
     previewLayoutModifiers:
       - inverse
     options:
       name: Inverse
       text: Inverse button disabled
-      classes: govuk-button--inverse
+      classes: ds_button--inverse
       disabled: true
   - name: inverse link
     description: A link button for actions that appear on dark backgrounds
@@ -167,7 +167,7 @@ examples:
       name: Inverse
       text: Inverse button
       href: '/'
-      classes: govuk-button--inverse
+      classes: ds_button--inverse
   - name: inverse start
     description: A start button that appears on dark backgrounds
     previewLayoutModifiers:
@@ -176,7 +176,7 @@ examples:
       name: Inverse
       text: Inverse start button
       href: '/'
-      classes: govuk-button--inverse
+      classes: ds_button--inverse
       isStartButton: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures

@@ -15,23 +15,23 @@ describe('Checkboxes', () => {
   it('render example with minimum required name and items', () => {
     const $ = render('checkboxes', examples.default)
 
-    const $component = $('.govuk-checkboxes')
+    const $component = $('.ds_checkboxes')
 
     const $firstInput = $component.find(
-      '.govuk-checkboxes__item:first-child input'
+      '.ds_checkboxes__item:first-child input'
     )
     const $firstLabel = $component.find(
-      '.govuk-checkboxes__item:first-child label'
+      '.ds_checkboxes__item:first-child label'
     )
     expect($firstInput.attr('name')).toEqual('nationality')
     expect($firstInput.val()).toEqual('british')
     expect($firstLabel.text()).toContain('British')
 
     const $lastInput = $component.find(
-      '.govuk-checkboxes__item:last-child input'
+      '.ds_checkboxes__item:last-child input'
     )
     const $lastLabel = $component.find(
-      '.govuk-checkboxes__item:last-child label'
+      '.ds_checkboxes__item:last-child label'
     )
     expect($lastInput.attr('name')).toEqual('nationality')
     expect($lastInput.val()).toEqual('other')
@@ -41,8 +41,8 @@ describe('Checkboxes', () => {
   it('render example without falsely values', () => {
     const $ = render('checkboxes', examples['with falsey values'])
 
-    const $component = $('.govuk-checkboxes')
-    const $items = $component.find('.govuk-checkboxes__item')
+    const $component = $('.ds_checkboxes')
+    const $items = $component.find('.ds_checkboxes__item')
 
     expect($items.length).toEqual(2)
   })
@@ -50,12 +50,12 @@ describe('Checkboxes', () => {
   it('render example with a divider and ‘None’ checkbox with exclusive behaviour', () => {
     const $ = render('checkboxes', examples['with divider and None'])
 
-    const $component = $('.govuk-checkboxes')
+    const $component = $('.ds_checkboxes')
 
-    const $divider = $component.find('.govuk-checkboxes__divider').first()
+    const $divider = $component.find('.ds_checkboxes__divider').first()
     expect($divider.text().trim()).toEqual('or')
 
-    const $items = $component.find('.govuk-checkboxes__item')
+    const $items = $component.find('.ds_checkboxes__item')
     expect($items.length).toEqual(4)
 
     const $orItemInput = $items.last().find('input').first()
@@ -65,15 +65,15 @@ describe('Checkboxes', () => {
   it('render additional label classes', () => {
     const $ = render('checkboxes', examples['with label classes'])
 
-    const $component = $('.govuk-checkboxes')
-    const $label = $component.find('.govuk-checkboxes__item label')
+    const $component = $('.ds_checkboxes')
+    const $label = $component.find('.ds_checkboxes__item label')
     expect($label.hasClass('bold')).toBeTruthy()
   })
 
   it('render classes', () => {
     const $ = render('checkboxes', examples.classes)
 
-    const $component = $('.govuk-checkboxes')
+    const $component = $('.ds_checkboxes')
 
     expect($component.hasClass('app-checkboxes--custom-modifier')).toBeTruthy()
   })
@@ -81,56 +81,56 @@ describe('Checkboxes', () => {
   it('renders initial aria-describedby on fieldset', () => {
     const $ = render('checkboxes', examples['with fieldset describedBy'])
 
-    const $fieldset = $('.govuk-fieldset')
+    const $fieldset = $('.ds_fieldset')
     expect($fieldset.attr('aria-describedby')).toMatch('some-id')
   })
 
   it('render attributes', () => {
     const $ = render('checkboxes', examples.attributes)
 
-    const $component = $('.govuk-checkboxes')
+    const $component = $('.ds_checkboxes')
 
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-second-attribute')).toEqual('second-value')
   })
 
-  it('renders with a form group wrapper', () => {
+  it('renders with a field group wrapper', () => {
     const $ = render('checkboxes', examples.default)
 
-    const $formGroup = $('.govuk-form-group')
-    expect($formGroup.length).toBeTruthy()
+    const $fieldGroup = $('.ds_field-group')
+    expect($fieldGroup.length).toBeTruthy()
   })
 
-  it('render a custom class on the form group', () => {
+  it('render a custom class on the field group', () => {
     const $ = render(
       'checkboxes',
-      examples['with optional form-group classes showing group error']
+      examples['with optional field-group classes showing group error']
     )
 
-    const $formGroup = $('.govuk-form-group')
-    expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    const $fieldGroup = $('.ds_field-group')
+    expect($fieldGroup.hasClass('ds_field-group--error')).toBeTruthy()
   })
 
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
       const $ = render('checkboxes', examples.default)
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $firstInput = $component.find(
-        '.govuk-checkboxes__item:first-child input'
+        '.ds_checkboxes__item:first-child input'
       )
       const $firstLabel = $component.find(
-        '.govuk-checkboxes__item:first-child label'
+        '.ds_checkboxes__item:first-child label'
       )
       expect($firstInput.attr('id')).toEqual('nationality')
       expect($firstLabel.attr('for')).toEqual('nationality')
 
       const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
+        '.ds_checkboxes__item:last-child input'
       )
       const $lastLabel = $component.find(
-        '.govuk-checkboxes__item:last-child label'
+        '.ds_checkboxes__item:last-child label'
       )
       expect($lastInput.attr('id')).toEqual('nationality-3')
       expect($lastLabel.attr('for')).toEqual('nationality-3')
@@ -139,22 +139,22 @@ describe('Checkboxes', () => {
     it('render a matching label and input using custom idPrefix', () => {
       const $ = render('checkboxes', examples['with idPrefix'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $firstInput = $component.find(
-        '.govuk-checkboxes__item:first-child input'
+        '.ds_checkboxes__item:first-child input'
       )
       const $firstLabel = $component.find(
-        '.govuk-checkboxes__item:first-child label'
+        '.ds_checkboxes__item:first-child label'
       )
       expect($firstInput.attr('id')).toEqual('nationality')
       expect($firstLabel.attr('for')).toEqual('nationality')
 
       const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
+        '.ds_checkboxes__item:last-child input'
       )
       const $lastLabel = $component.find(
-        '.govuk-checkboxes__item:last-child label'
+        '.ds_checkboxes__item:last-child label'
       )
       expect($lastInput.attr('id')).toEqual('nationality-2')
       expect($lastLabel.attr('for')).toEqual('nationality-2')
@@ -163,18 +163,18 @@ describe('Checkboxes', () => {
     it('render explicitly passed item ids', () => {
       const $ = render('checkboxes', examples['with id and name'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
+        '.ds_checkboxes__item:last-child input'
       )
       expect($lastInput.attr('id')).toBe('with-id-and-name-3')
 
       const $firstInput = $component.find(
-        '.govuk-checkboxes__item:first-child input'
+        '.ds_checkboxes__item:first-child input'
       )
       const $firstLabel = $component.find(
-        '.govuk-checkboxes__item:first-child label'
+        '.ds_checkboxes__item:first-child label'
       )
       expect($firstInput.attr('id')).toBe('item_british')
       expect($firstLabel.attr('for')).toEqual('item_british')
@@ -183,10 +183,10 @@ describe('Checkboxes', () => {
     it('render explicitly passed item names', () => {
       const $ = render('checkboxes', examples['with id and name'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
+        '.ds_checkboxes__item:last-child input'
       )
       expect($lastInput.attr('name')).toBe('custom-name-scottish')
     })
@@ -194,10 +194,10 @@ describe('Checkboxes', () => {
     it('render disabled', () => {
       const $ = render('checkboxes', examples['with disabled item'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $disabledInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
+        '.ds_checkboxes__item:last-child input'
       )
       expect($disabledInput.attr('disabled')).toEqual('disabled')
     })
@@ -205,12 +205,12 @@ describe('Checkboxes', () => {
     it('render checked', () => {
       const $ = render('checkboxes', examples['with checked item'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
       const $secondInput = $component.find(
-        '.govuk-checkboxes__item:nth-child(2) input'
+        '.ds_checkboxes__item:nth-child(2) input'
       )
       const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
+        '.ds_checkboxes__item:last-child input'
       )
       expect($secondInput.attr('checked')).toEqual('checked')
       expect($lastInput.attr('checked')).toEqual('checked')
@@ -219,7 +219,7 @@ describe('Checkboxes', () => {
     it('checks the checkboxes in values', () => {
       const $ = render('checkboxes', examples['with pre-checked values'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
       const $british = $component.find('input[value="british"]')
       expect($british.attr('checked')).toEqual('checked')
 
@@ -230,7 +230,7 @@ describe('Checkboxes', () => {
     it('allows item.checked to override values', () => {
       const $ = render('checkboxes', examples['item checked overrides values'])
 
-      const $green = $('.govuk-checkboxes').find('input[value="green"]')
+      const $green = $('.ds_checkboxes').find('input[value="green"]')
       expect($green.attr('checked')).toBeUndefined()
     })
 
@@ -238,16 +238,16 @@ describe('Checkboxes', () => {
       it('it renders the attributes', () => {
         const $ = render('checkboxes', examples['items with attributes'])
 
-        const $component = $('.govuk-checkboxes')
+        const $component = $('.ds_checkboxes')
 
         const $firstInput = $component.find(
-          '.govuk-checkboxes__item:first-child input'
+          '.ds_checkboxes__item:first-child input'
         )
         expect($firstInput.attr('data-attribute')).toEqual('ABC')
         expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
 
         const $lastInput = $component.find(
-          '.govuk-checkboxes__item:last-child input'
+          '.ds_checkboxes__item:last-child input'
         )
         expect($lastInput.attr('data-attribute')).toEqual('GHI')
         expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
@@ -259,7 +259,7 @@ describe('Checkboxes', () => {
     it('it renders the hint text', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
-      const $firstHint = $('.govuk-checkboxes__hint').first()
+      const $firstHint = $('.ds_checkboxes__hint').first()
       expect($firstHint.text().trim()).toContain(
         "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
       )
@@ -268,7 +268,7 @@ describe('Checkboxes', () => {
     it('it renders the correct id attribute for the hint', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
-      expect($('.govuk-checkboxes__hint').attr('id')).toBe(
+      expect($('.ds_checkboxes__hint').attr('id')).toBe(
         'government-gateway-item-hint'
       )
     })
@@ -276,7 +276,7 @@ describe('Checkboxes', () => {
     it('the input describedBy attribute matches the item hint id', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
-      expect($('.govuk-checkboxes__input').attr('aria-describedby')).toBe(
+      expect($('.ds_checkboxes__input').attr('aria-describedby')).toBe(
         'government-gateway-item-hint'
       )
     })
@@ -286,52 +286,52 @@ describe('Checkboxes', () => {
     it('hidden by default when not checked', () => {
       const $ = render('checkboxes', examples['with conditional items'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $firstConditional = $component
-        .find('.govuk-checkboxes__conditional')
+        .find('.ds_checkboxes__conditional')
         .first()
       expect($firstConditional.text().trim()).toContain('Email address')
       expect(
-        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
+        $firstConditional.hasClass('ds_checkboxes__conditional--hidden')
       ).toBeTruthy()
     })
     it('visible by default when checked', () => {
       const $ = render('checkboxes', examples['with conditional item checked'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $firstConditional = $component
-        .find('.govuk-checkboxes__conditional')
+        .find('.ds_checkboxes__conditional')
         .first()
       expect($firstConditional.text().trim()).toContain('Email address')
       expect(
-        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
+        $firstConditional.hasClass('ds_checkboxes__conditional--hidden')
       ).toBeFalsy()
     })
 
     it('visible when checked with pre-checked values', () => {
       const $ = render('checkboxes', examples['with pre-checked values'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
       const $firstConditional = $component
-        .find('.govuk-checkboxes__conditional')
+        .find('.ds_checkboxes__conditional')
         .first()
       expect($firstConditional.text().trim()).toContain('Country')
       expect(
-        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
+        $firstConditional.hasClass('ds_checkboxes__conditional--hidden')
       ).toBeFalsy()
     })
 
     it('with association to the input they are controlled by', () => {
       const $ = render('checkboxes', examples['with conditional items'])
 
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.ds_checkboxes')
 
-      const $lastInput = $component.find('.govuk-checkboxes__input').last()
+      const $lastInput = $component.find('.ds_checkboxes__input').last()
       const $lastConditional = $component
-        .find('.govuk-checkboxes__conditional')
+        .find('.ds_checkboxes__conditional')
         .last()
 
       expect($lastInput.attr('data-aria-controls')).toBe(
@@ -343,8 +343,8 @@ describe('Checkboxes', () => {
     it('omits empty conditionals', () => {
       const $ = render('checkboxes', examples['empty conditional'])
 
-      const $component = $('.govuk-checkboxes')
-      expect($component.find('.govuk-checkboxes__conditional').length).toEqual(
+      const $component = $('.ds_checkboxes')
+      expect($component.find('.ds_checkboxes__conditional').length).toEqual(
         0
       )
     })
@@ -352,7 +352,7 @@ describe('Checkboxes', () => {
     it('does not associate checkboxes with empty conditionals', () => {
       const $ = render('checkboxes', examples['empty conditional'])
 
-      const $input = $('.govuk-checkboxes__input').first()
+      const $input = $('.ds_checkboxes__input').first()
       expect($input.attr('data-aria-controls')).toBeFalsy()
     })
   })
@@ -361,20 +361,20 @@ describe('Checkboxes', () => {
     it('renders the error message', () => {
       const $ = render('checkboxes', examples['with error message'])
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_error-message')).toMatchSnapshot()
     })
 
     it('uses the idPrefix for the error message id if provided', () => {
       const $ = render('checkboxes', examples['with error and idPrefix'])
 
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const errorMessageId = $('.ds_error-message').attr('id')
       expect(errorMessageId).toEqual('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
       const $ = render('checkboxes', examples['with error message'])
 
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const errorMessageId = $('.ds_error-message').attr('id')
       expect(errorMessageId).toEqual('waste-error')
     })
 
@@ -384,8 +384,8 @@ describe('Checkboxes', () => {
         examples['with fieldset and error message']
       )
 
-      const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const $fieldset = $('.ds_fieldset')
+      const errorMessageId = $('.ds_error-message').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
@@ -400,8 +400,8 @@ describe('Checkboxes', () => {
         examples['with error message and fieldset describedBy']
       )
 
-      const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const $fieldset = $('.ds_fieldset')
+      const errorMessageId = $('.ds_error-message').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
@@ -427,11 +427,11 @@ describe('Checkboxes', () => {
       })
     })
 
-    it('renders with a form group wrapper that has an error state', () => {
+    it('renders with a field group wrapper that has an error state', () => {
       const $ = render('checkboxes', examples['with error message'])
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+      const $fieldGroup = $('.ds_field-group')
+      expect($fieldGroup.hasClass('ds_field-group--error')).toBeTruthy()
     })
   })
 
@@ -439,14 +439,14 @@ describe('Checkboxes', () => {
     it('renders the hint', () => {
       const $ = render('checkboxes', examples['multiple hints'])
 
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
       const $ = render('checkboxes', examples['with id and name'])
 
-      const $fieldset = $('.govuk-fieldset')
-      const hintId = $('.govuk-hint').attr('id')
+      const $fieldset = $('.ds_fieldset')
+      const hintId = $('.ds_hint').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
@@ -457,8 +457,8 @@ describe('Checkboxes', () => {
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const $ = render('checkboxes', examples['with fieldset describedBy'])
 
-      const $fieldset = $('.govuk-fieldset')
-      const hintId = $('.govuk-hint').attr('id')
+      const $fieldset = $('.ds_fieldset')
+      const hintId = $('.ds_hint').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
@@ -472,10 +472,10 @@ describe('Checkboxes', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
       const $ = render('checkboxes', examples['with error message and hint'])
 
-      const $fieldset = $('.govuk-fieldset')
+      const $fieldset = $('.ds_fieldset')
 
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = $('.ds_error-message').attr('id')
+      const hintId = $('.ds_hint').attr('id')
 
       const describedByCombined = new RegExp(
         `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
@@ -490,9 +490,9 @@ describe('Checkboxes', () => {
         examples['with error, hint and fieldset describedBy']
       )
 
-      const $fieldset = $('.govuk-fieldset')
-      const hintId = $('.govuk-hint').attr('id')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const $fieldset = $('.ds_fieldset')
+      const hintId = $('.ds_hint').attr('id')
+      const errorMessageId = $('.ds_error-message').attr('id')
 
       const describedByCombined = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
@@ -507,7 +507,7 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['fieldset params'])
 
       const $component = $(
-        '.govuk-form-group > .govuk-fieldset > .govuk-checkboxes'
+        '.ds_field-group > .ds_fieldset > .ds_checkboxes'
       )
       expect($component.length).toBeTruthy()
     })
@@ -515,19 +515,19 @@ describe('Checkboxes', () => {
     it('passes through label params without breaking', () => {
       const $ = render('checkboxes', examples['label with attributes'])
 
-      expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_checkboxes__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
       const $ = render('checkboxes', examples['fieldset params'])
 
-      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
       const $ = render('checkboxes', examples['fieldset html params'])
 
-      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_fieldset')).toMatchSnapshot()
     })
   })
 

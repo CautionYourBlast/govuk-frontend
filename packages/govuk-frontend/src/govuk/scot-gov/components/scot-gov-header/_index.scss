@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    ARTICLE HEADER
+    title block for articles
+\*------------------------------------*/
+
+.ds_page-header {
+    margin: 16px 0 32px;
+
+    &__title {
+        margin-bottom: 0;
+    }
+
+    &__metadata {
+        margin-top: 8px;
+    }
+}
+
+@include ds_media-query(medium) {
+    .ds_page-header {
+        margin-top: 32px;
+
+        &__label + &__title {
+            margin-top: -8px;
+        }
+    }
+}

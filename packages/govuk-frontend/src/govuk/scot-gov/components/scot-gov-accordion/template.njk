@@ -3,7 +3,7 @@
 {% set id = params.id %}
 {% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
-<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}"
+<div class="ds_accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="ds_accordion" id="{{ id }}"
   {{- govukI18nAttributes({
     key: 'hide-all-sections',
     message: params.hideAllSectionsText
@@ -47,7 +47,7 @@
           <span class="ds_accordion-item__indicator"></span>
           <label class="ds_accordion-item__label" for="panel-{{ loop.index }}"><span class="visually-hidden">Show this section</span></label>
 {#          {% if item.summary.html or item.summary.text %}
-            <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
+            <div class="ds_accordion__section-summary ds_body" id="{{ id }}-summary-{{ loop.index }}">
               {{ item.summary.html | safe if item.summary.html else item.summary.text }}
             </div>
           {% endif %} #}

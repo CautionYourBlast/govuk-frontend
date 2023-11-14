@@ -23,8 +23,8 @@ describe('scotGovCharacterCount', () => {
 
       beforeEach(() => {
         const $div = document.querySelector('[data-module]')
-        componentWithMaxLength = new scotGovCharacterCount($div, { maxlength: 100 })
-        componentWithMaxWords = new scotGovCharacterCount($div, { maxwords: 100 })
+        componentWithMaxLength = new scotGovCharacterCount([$div, { maxlength: 100 }])
+        componentWithMaxWords = new scotGovCharacterCount([$div, { maxwords: 100 }])
       })
 
       const cases = [
@@ -88,12 +88,12 @@ describe('scotGovCharacterCount', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
           const $div = document.querySelector('[data-module]')
-          const component = new scotGovCharacterCount($div, {
+          const component = new scotGovCharacterCount([$div, {
             maxlength: 100,
             i18n: {
               charactersUnderLimit: { one: 'Custom text. Count: %{count}' }
             }
-          })
+          }])
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(1, 'characters')).toEqual(
@@ -109,18 +109,18 @@ describe('scotGovCharacterCount', () => {
 
         it('uses specific keys for when limit is reached', () => {
           const $div = document.querySelector('[data-module]')
-          const componentWithMaxLength = new scotGovCharacterCount($div, {
+          const componentWithMaxLength = new scotGovCharacterCount([$div, {
             maxlength: 100,
             i18n: {
               charactersAtLimit: 'Custom text.'
             }
-          })
-          const componentWithMaxWords = new scotGovCharacterCount($div, {
+          }])
+          const componentWithMaxWords = new scotGovCharacterCount([$div, {
             maxwords: 100,
             i18n: {
               wordsAtLimit: 'Different custom text.'
             }
-          })
+          }])
 
           expect(
             // @ts-expect-error Property 'formatCountMessage' is private
@@ -139,7 +139,7 @@ describe('scotGovCharacterCount', () => {
           const $div = document.querySelector('[data-module]')
           $div.setAttribute('lang', 'de')
 
-          const component = new scotGovCharacterCount($div, { maxwords: 20000 })
+          const component = new scotGovCharacterCount([$div, { maxwords: 20000 }])
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10000, 'words')).toEqual(
@@ -152,7 +152,7 @@ describe('scotGovCharacterCount', () => {
 
           const $div = document.querySelector('[data-module]')
 
-          const component = new scotGovCharacterCount($div, { maxwords: 20000 })
+          const component = new scotGovCharacterCount([$div, { maxwords: 20000 }])
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10000, 'words')).toEqual(
@@ -169,7 +169,7 @@ describe('scotGovCharacterCount', () => {
             'Custom text. Count: %{count}'
           )
 
-          const component = new scotGovCharacterCount($div, { maxlength: 100 })
+          const component = new scotGovCharacterCount([$div, { maxlength: 100 }])
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(1, 'characters')).toEqual(
@@ -191,14 +191,14 @@ describe('scotGovCharacterCount', () => {
               'Custom text. Count: %{count}'
             )
 
-            const component = new scotGovCharacterCount($div, {
+            const component = new scotGovCharacterCount([$div, {
               maxlength: 100,
               i18n: {
                 charactersUnderLimit: {
                   one: 'Different custom text. Count: %{count}'
                 }
               }
-            })
+            }])
 
             // @ts-expect-error Property 'formatCountMessage' is private
             expect(component.formatCountMessage(1, 'characters')).toEqual(

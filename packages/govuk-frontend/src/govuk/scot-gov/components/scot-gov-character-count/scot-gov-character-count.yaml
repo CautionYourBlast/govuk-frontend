@@ -6,7 +6,7 @@ params:
   - name: name
     type: string
     required: true
-    description: The name of the textarea, which is submitted with the form data.
+    description: The name of the textarea, which is submitted with the field data.
   - name: rows
     type: string
     required: false
@@ -42,15 +42,15 @@ params:
     required: false
     description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
     isComponent: true
-  - name: formGroup
+  - name: fieldGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Options for the field-group wrapper.
     params:
       - name: classes
         type: string
         required: false
-        description: Classes to add to the form group (for example to show error state for the whole group).
+        description: Classes to add to the field group (for example to show error state for the whole group).
   - name: classes
     type: string
     required: false
@@ -79,7 +79,7 @@ params:
   - name: charactersUnderLimitText
     type: object
     required: false
-    description: Message displayed when the number of characters is under the configured maximum, `maxlength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining characters. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+    description: Message displayed when the number of characters is under the configured maximum, `maxlength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining characters. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-ds_frontend).
   - name: charactersAtLimitText
     type: string
     required: false
@@ -87,11 +87,11 @@ params:
   - name: charactersOverLimitText
     type: object
     required: false
-    description: Message displayed when the number of characters is over the configured maximum, `maxlength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+    description: Message displayed when the number of characters is over the configured maximum, `maxlength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-ds_frontend).
   - name: wordsUnderLimitText
     type: object
     required: false
-    description: Message displayed when the number of words is under the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining words. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+    description: Message displayed when the number of words is under the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining words. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-ds_frontend).
   - name: wordsAtLimitText
     type: string
     required: false
@@ -99,7 +99,7 @@ params:
   - name: wordsOverLimitText
     type: object
     required: false
-    description: Message displayed when the number of words is over the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+    description: Message displayed when the number of words is over the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-ds_frontend).
 
 examples:
   - name: default
@@ -128,7 +128,7 @@ examples:
       label:
         text: Can you provide more detail?
       hint:
-        text: Don't include personal or financial information, eg your
+        text: Don't include personal or financial infieldation, eg your
           National Insurance number or credit card details.
 
   - name: with default value
@@ -173,7 +173,7 @@ examples:
       maxlength: 10
       label:
         text: Full address
-        classes: govuk-label--l
+        classes: ds_label--l
         isPageHeading: true
 
   - name: with word count
@@ -235,15 +235,15 @@ examples:
         text: With attributes
       attributes:
         data-attribute: my data value
-  - name: formGroup with classes
+  - name: fieldGroup with classes
     hidden: true
     options:
-      id: with-formgroup
-      name: with-formgroup
+      id: with-fieldgroup
+      name: with-fieldgroup
       maxlength: 10
       label:
-        text: With formgroup
-      formGroup:
+        text: With fieldgroup
+      fieldGroup:
         classes: app-character-count--custom-modifier
   - name: custom classes on countMessage
     hidden: true

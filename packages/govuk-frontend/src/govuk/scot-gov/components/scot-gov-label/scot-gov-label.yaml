@@ -30,43 +30,43 @@ examples:
       text: National Insurance number
   - name: with bold text
     options:
-      classes: govuk-label--s
+      classes: ds_label--s
       text: National Insurance number
   - name: styled as xl text
     options:
       text: National Insurance number
-      classes: govuk-label--xl
+      classes: ds_label--xl
   - name: styled as large text
     options:
       text: National Insurance number
-      classes: govuk-label--l
+      classes: ds_label--l
   - name: styled as medium text
     options:
       text: National Insurance number
-      classes: govuk-label--m
+      classes: ds_label--m
   - name: styled as small text
     options:
       text: National Insurance number
-      classes: govuk-label--s
+      classes: ds_label--s
   - name: as page heading xl
     options:
       text: National Insurance number
-      classes: govuk-label--xl
+      classes: ds_label--xl
       isPageHeading: true
   - name: as page heading l
     options:
       text: National Insurance number
-      classes: govuk-label--l
+      classes: ds_label--l
       isPageHeading: true
   - name: as page heading m
     options:
       text: National Insurance number
-      classes: govuk-label--m
+      classes: ds_label--m
       isPageHeading: true
   - name: as page heading s
     options:
       text: National Insurance number
-      classes: govuk-label--s
+      classes: ds_label--s
       isPageHeading: true
   - name: as page heading without class
     options:

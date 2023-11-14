@@ -3,8 +3,9 @@
 'use strict';
 
 import temporaryFocus from "../../base/tools/temporary-focus/temporary-focus";
+import { GOVUKFrontendComponent } from '../../../govuk-frontend-component.mjs'
 
-export class SkipLink extends GOVUKFrontendComponent{
+export class scotGovSkipLink extends GOVUKFrontendComponent{
     init() {
         [].slice.call(document.querySelectorAll('.ds_skip-links__link')).forEach(link => {
             link.addEventListener('click', () => {

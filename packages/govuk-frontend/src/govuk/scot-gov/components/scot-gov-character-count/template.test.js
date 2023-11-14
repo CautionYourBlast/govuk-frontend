@@ -15,21 +15,21 @@ describe('Character count', () => {
     it('renders with id', () => {
       const $ = render('character-count', examples.default)
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect($component.attr('id')).toEqual('more-detail')
     })
 
     it('renders with name', () => {
       const $ = render('character-count', examples.default)
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect($component.attr('name')).toEqual('more-detail')
     })
 
     it('renders with default number of rows', () => {
       const $ = render('character-count', examples.default)
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect($component.attr('rows')).toEqual('5')
     })
   })
@@ -38,7 +38,7 @@ describe('Character count', () => {
     it('renders with classes', () => {
       const $ = render('character-count', examples.classes)
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect(
         $component.hasClass('app-character-count--custom-modifier')
       ).toBeTruthy()
@@ -47,28 +47,28 @@ describe('Character count', () => {
     it('renders with rows', () => {
       const $ = render('character-count', examples['with custom rows'])
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect($component.attr('rows')).toEqual('8')
     })
 
     it('renders with value', () => {
       const $ = render('character-count', examples['with default value'])
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect($component.text()).toEqual('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
     it('renders with attributes', () => {
       const $ = render('character-count', examples.attributes)
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
 
     it('renders with formGroup', () => {
       const $ = render('character-count', examples['formGroup with classes'])
 
-      const $component = $('.govuk-form-group')
+      const $component = $('.ds_form-group')
       expect(
         $component.hasClass('app-character-count--custom-modifier')
       ).toBeTruthy()
@@ -79,7 +79,7 @@ describe('Character count', () => {
     it('renders with the amount of characters expected', () => {
       const $ = render('character-count', examples.default)
 
-      const $countMessage = $('.govuk-character-count__message')
+      const $countMessage = $('.ds_character-count__message')
       expect($countMessage.text()).toContain(
         'You can enter up to 10 characters'
       )
@@ -88,15 +88,15 @@ describe('Character count', () => {
     it('renders with the amount of words expected', () => {
       const $ = render('character-count', examples['with word count'])
 
-      const $countMessage = $('.govuk-character-count__message')
+      const $countMessage = $('.ds_character-count__message')
       expect($countMessage.text()).toContain('You can enter up to 10 words')
     })
 
     it('is associated with the textarea', () => {
       const $ = render('character-count', examples.default)
 
-      const $textarea = $('.govuk-js-character-count')
-      const countMessageId = $('.govuk-character-count__message').attr('id')
+      const $textarea = $('.ds_js-character-count')
+      const countMessageId = $('.ds_character-count__message').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}${countMessageId}${WORD_BOUNDARY}`
@@ -111,7 +111,7 @@ describe('Character count', () => {
         examples['custom classes on countMessage']
       )
 
-      const $countMessage = $('.govuk-character-count__message')
+      const $countMessage = $('.ds_character-count__message')
       expect($countMessage.hasClass('app-custom-count-message')).toBeTruthy()
     })
   })
@@ -120,21 +120,21 @@ describe('Character count', () => {
     it('renders the textarea with spellcheck attribute set to true', () => {
       const $ = render('character-count', examples['spellcheck enabled'])
 
-      const $component = $('.govuk-character-count .govuk-textarea')
+      const $component = $('.ds_character-count .ds_textarea')
       expect($component.attr('spellcheck')).toEqual('true')
     })
 
     it('renders the textarea with spellcheck attribute set to false', () => {
       const $ = render('character-count', examples['spellcheck disabled'])
 
-      const $component = $('.govuk-character-count .govuk-textarea')
+      const $component = $('.ds_character-count .ds_textarea')
       expect($component.attr('spellcheck')).toEqual('false')
     })
 
     it('renders the textarea without spellcheck attribute by default', () => {
       const $ = render('character-count', examples.default)
 
-      const $component = $('.govuk-character-count .govuk-textarea')
+      const $component = $('.ds_character-count .ds_textarea')
       expect($component.attr('spellcheck')).toBeUndefined()
     })
   })
@@ -143,14 +143,14 @@ describe('Character count', () => {
     it('renders with hint', () => {
       const $ = render('character-count', examples['with hint'])
 
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_hint')).toMatchSnapshot()
     })
 
     it('associates the character count as "described by" the hint', () => {
       const $ = render('character-count', examples['with hint'])
 
-      const $textarea = $('.govuk-js-character-count')
-      const hintId = $('.govuk-hint').attr('id')
+      const $textarea = $('.ds_js-character-count')
+      const hintId = $('.ds_hint').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
@@ -167,7 +167,7 @@ describe('Character count', () => {
         examples['with default value exceeding limit']
       )
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_error-message')).toMatchSnapshot()
     })
 
     it('associates the character-count as "described by" the error message', () => {
@@ -176,8 +176,8 @@ describe('Character count', () => {
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-js-character-count')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const $component = $('.ds_js-character-count')
+      const errorMessageId = $('.ds_error-message').attr('id')
 
       const describedBy = new RegExp(
         `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
@@ -192,8 +192,8 @@ describe('Character count', () => {
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
+      const $component = $('.ds_js-character-count')
+      expect($component.hasClass('ds_textarea--error')).toBeTruthy()
     })
 
     it('renders with classes', () => {
@@ -202,7 +202,7 @@ describe('Character count', () => {
         examples['custom classes with error message']
       )
 
-      const $component = $('.govuk-js-character-count')
+      const $component = $('.ds_js-character-count')
       expect(
         $component.hasClass('app-character-count--custom-modifier')
       ).toBeTruthy()
@@ -216,20 +216,20 @@ describe('Character count', () => {
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-form-group > .govuk-js-character-count')
+      const $component = $('.ds_form-group > .ds_js-character-count')
       expect($component.length).toBeTruthy()
     })
 
     it('renders with label', () => {
       const $ = render('character-count', examples.default)
 
-      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the character count "id"', () => {
       const $ = render('character-count', examples.default)
 
-      const $label = $('.govuk-label')
+      const $label = $('.ds_label')
       expect($label.attr('for')).toEqual('more-detail')
     })
   })
@@ -238,7 +238,7 @@ describe('Character count', () => {
     it('hides the count to start with', () => {
       const $ = render('character-count', examples['with threshold'])
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.ds_character-count')
       expect($component.attr('data-threshold')).toEqual('75')
     })
   })
@@ -250,7 +250,7 @@ describe('Character count', () => {
         examples['with custom textarea description']
       )
 
-      const message = $('.govuk-character-count__message').text().trim()
+      const message = $('.ds_character-count__message').text().trim()
       expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
     })
   })
@@ -297,7 +297,7 @@ describe('Character count', () => {
 
         // No content is set as the accessible description cannot be interpolated on the backend
         // It'll be up to the JavaScript to fill it in
-        const $countMessage = $('.govuk-character-count__message')
+        const $countMessage = $('.ds_character-count__message')
         expect($countMessage.html()).toMatch(/^\s*$/) // The macro outputs linebreaks around the hint itself
       })
     })

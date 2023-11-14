@@ -23,8 +23,8 @@ params:
 examples:
   - name: default
     options:
-      text: Skip to main content
-      href: '#content'
+      text: Skip to end
+      href: '#end'
 
   - name: with focus
     description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.

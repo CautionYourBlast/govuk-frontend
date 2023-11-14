@@ -34,11 +34,11 @@ describe('Textarea', () => {
       expect($component.attr('rows')).toEqual('5')
     })
 
-    it('renders with a form group wrapper', () => {
+    it('renders with a field group wrapper', () => {
       const $ = render('textarea', examples.default)
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.length).toBeTruthy()
+      const $fieldGroup = $('.ds_field-group')
+      expect($fieldGroup.length).toBeTruthy()
     })
   })
 
@@ -78,11 +78,11 @@ describe('Textarea', () => {
       expect($component.attr('rows')).toEqual('8')
     })
 
-    it('renders with a form group wrapper that has extra classes', () => {
-      const $ = render('textarea', examples['with optional form-group classes'])
+    it('renders with a field group wrapper that has extra classes', () => {
+      const $ = render('textarea', examples['with optional field-group classes'])
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('extra-class')).toBeTruthy()
+      const $fieldGroup = $('.ds_field-group')
+      expect($fieldGroup.hasClass('extra-class')).toBeTruthy()
     })
   })
 
@@ -186,11 +186,11 @@ describe('Textarea', () => {
       expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
     })
 
-    it('renders with a form group wrapper that has an error state', () => {
+    it('renders with a field group wrapper that has an error state', () => {
       const $ = render('textarea', examples['with error message'])
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+      const $fieldGroup = $('.ds_field-group')
+      expect($fieldGroup.hasClass('ds_field-group--error')).toBeTruthy()
     })
   })
 
@@ -231,28 +231,28 @@ describe('Textarea', () => {
     it('have correct nesting order', () => {
       const $ = render('textarea', examples.default)
 
-      const $component = $('.govuk-form-group > .govuk-textarea')
+      const $component = $('.ds_field-group > .govuk-textarea')
       expect($component.length).toBeTruthy()
     })
 
     it('renders with label', () => {
       const $ = render('textarea', examples.default)
 
-      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.ds_label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the textarea "id"', () => {
       const $ = render('textarea', examples.default)
 
-      const $label = $('.govuk-label')
+      const $label = $('.ds_label')
       expect($label.attr('for')).toEqual('more-detail')
     })
 
     it('renders label as page heading', () => {
       const $ = render('textarea', examples['with label as page heading'])
 
-      const $label = $('.govuk-label')
-      expect($('.govuk-label-wrapper')).toBeTruthy()
+      const $label = $('.ds_label')
+      expect($('.ds_label-wrapper')).toBeTruthy()
       expect($label.attr('for')).toEqual('textarea-with-page-heading')
     })
   })

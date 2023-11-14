@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    FIELD GROUP
+\*------------------------------------*/
+
+.ds_field-group {
+    margin-top: 16px;
+    // margin-bottom: -24px;
+
+    &--inline {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &--inline > div:not(:last-child) {
+        margin-right: 16px;
+    }
+}

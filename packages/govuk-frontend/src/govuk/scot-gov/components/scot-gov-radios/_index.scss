@@ -1,0 +1,35 @@
+/*------------------------------------*\
+    RADIO BUTTONS
+\*------------------------------------*/
+
+.ds_radio {
+  @include ds_radiocheckboxstates(true, 1px);
+
+  &__label::after {
+      top: 6px;
+      left: 10px;
+      width: 0;
+      height: 0;
+      border: 10px solid currentColor;
+      border-radius: 50%;
+      background: currentColor;
+  }
+
+  &--small &__label::after {
+      border-width: 6px;
+      left: 14px;
+      top: 10px;
+  }
+}
+
+@include ds_media-query(medium) {
+  .ds_radio {
+      &__label::after {
+          top: 10px;
+      }
+
+      &--small &__label::after {
+          top: 14px;
+      }
+  }
+}
