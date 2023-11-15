@@ -5,3 +5,6 @@ $govuk-show-breakpoints: true;
 @import "partials/code";
 @import "partials/banner";
 @import "partials/prose";
+
+@import "@scottish-government/design-system/src/design-system";
+

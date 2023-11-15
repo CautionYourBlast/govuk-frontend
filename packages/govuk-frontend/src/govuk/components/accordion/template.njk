@@ -3,7 +3,7 @@
 {% set id = params.id %}
 {% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
-<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}"
+<div class="ds_accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="ds_accordion" id="{{ id }}"
   {{- govukI18nAttributes({
     key: 'hide-all-sections',
     message: params.hideAllSectionsText
@@ -38,24 +38,25 @@
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
-      <div class="govuk-accordion__section {%- if item.expanded %} govuk-accordion__section--expanded{% endif %}">
-        <div class="govuk-accordion__section-header">
-          <h{{ headingLevel }} class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="{{ id }}-heading-{{ loop.index }}">
+      <div class="ds_accordion-item">
+        <input type="checkbox" checked="true" class="visually-hidden  ds_accordion-item__control" id="panel-{{ loop.index }}" aria-labelledby="panel-{{ loop.index }}-heading" data-accordion="accordion-open-{{ loop.index }}" />
+        <div class="ds_accordion-item__header">
+          <h{{ headingLevel }} id="panel-{{ loop.index }}-heading" class="ds_accordion-item__title">
               {{ item.heading.html | safe if item.heading.html else item.heading.text }}
-            </span>
           </h{{ headingLevel }}>
-          {% if item.summary.html or item.summary.text %}
-            <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
+          <span class="ds_accordion-item__indicator"></span>
+          <label class="ds_accordion-item__label" for="panel-{{ loop.index }}"><span class="visually-hidden">Show this section</span></label>
+{#          {% if item.summary.html or item.summary.text %}
+            <div class="ds_accordion__section-summary ds_body" id="{{ id }}-summary-{{ loop.index }}">
               {{ item.summary.html | safe if item.summary.html else item.summary.text }}
             </div>
-          {% endif %}
+          {% endif %} #}
         </div>
-        <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+        <div id="{{ id }}-content-{{ loop.index }}" class="ds_accordion-item__body" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
           {% if item.content.html %}
-            {{ item.content.html | safe }}
+            <p class="ds_accordion-item__text">{{ item.content.html | safe }}</p>
           {% elif item.content.text %}
-            <p class="govuk-body">{{ item.content.text }}</p>
+            <p class="ds_accordion-item__text">{{ item.content.text }}</p>
           {% endif %}
         </div>
       </div>

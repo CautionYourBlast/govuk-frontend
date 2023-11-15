@@ -12,8 +12,7 @@ const commands = {
   //
   // https://github.com/okonet/lint-staged#how-can-i-ignore-files-from-eslintignore
   eslint: filterTask('npm run lint:js:cli -- --fix'),
-  prettier: 'npm run lint:prettier:cli -- --write',
-  stylelint: 'npm run lint:scss:cli -- --fix --allow-empty-input'
+  prettier: 'npm run lint:prettier:cli -- --write'
 }
 
 module.exports = {

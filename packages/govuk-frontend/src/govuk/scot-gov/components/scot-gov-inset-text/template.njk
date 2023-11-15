@@ -1,8 +1,0 @@
-<div {%- if params.id %} id="{{ params.id }}"{% endif %} class="ds_inset-text"
-{%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <div class="ds_inset-text__text">
-    {{ caller() if caller else (params.html | safe if params.html else params.text) }}
-  </div>
-</div>
-
- {# {%- if params.classes %} {{ params.classes }}{% endif %} #}

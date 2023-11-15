@@ -6,9 +6,6 @@ import {
   getComponentNames,
   getComponentNamesFiltered,
   render,
-  getScotGovComponentsFixtures,
-  getScotGovComponentNames,
-  getScotGovComponentNamesFiltered
 } from '@govuk-frontend/lib/components'
 import { filterPath, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
@@ -49,17 +46,6 @@ export default async () => {
       packageOptions
     ),
 
-    getScotGovComponentsFixtures(packageOptions),
-
-    // Components list
-    getScotGovComponentNames(packageOptions),
-
-    // Components list (with JavaScript only)
-    getScotGovComponentNamesFiltered(
-      (componentName, componentFiles) =>
-        componentFiles.some(filterPath([`**/${componentName}.mjs`])),
-      packageOptions
-    ),
 
     getExampleNames(),
 
@@ -178,7 +164,7 @@ export default async () => {
   });
 
   // Component 'README' page
-  app.get('/:prefix(components|scot-gov-components)/:componentName', function (req, res, next) {
+  app.get('/:prefix(components)/:componentName', function (req, res, next) {
     // make variables available to nunjucks template
     res.locals.componentName = req.params.componentName
 

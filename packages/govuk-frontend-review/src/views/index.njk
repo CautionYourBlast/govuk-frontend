@@ -30,27 +30,6 @@
 
     </div>
 
-    <div class="govuk-grid-column-one-quarter-from-desktop">
-      <h2 class="govuk-heading-l">Scot Gov Components</h2>
-      <h3 class="govuk-heading-m govuk-!-margin-bottom-2">All Scot Gov components</h3>
-      <p class="govuk-body"><a href="/scot-gov-components/all" class="govuk-link govuk-link--muted">View all Scot Gov components</a></p>
-
-      <div class="govuk-grid-row govuk-!-margin-bottom-8">
-
-        {% for componentNamesSlice in scotGovComponentNames | slice(2) %}
-        <div class="govuk-grid-column-one-half govuk-grid-column-full-from-desktop">
-          <ul class="govuk-list govuk-!-margin-bottom-0">
-          {% for componentName in componentNamesSlice %}
-            <li><a href="/scot-gov-components/{{ componentName }}" class="govuk-link">{{ componentName | unslugify }}</a></li>
-          {% endfor %}
-          </ul>
-        </div>
-        {% endfor %}
-
-      </div>
-
-    </div>
-
     <div class="govuk-grid-column-two-quarters-from-desktop">
       <h2 class="govuk-heading-l">Examples</h2>
 
