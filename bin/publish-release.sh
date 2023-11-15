@@ -34,20 +34,10 @@ if [[ $continue_prompt != 'y' ]]; then
     exit 0
 fi
 
-# echo  "Checking that you can publish to npm..."
-
-# at some point we should create a team and check if user exists in a team
-# ! npm team ls developers | grep -q $NPM_USER
-
-NPM_USER=$(npm whoami)
-if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
-    echo "⚠️ FAILURE: You are not logged in with the correct user."
-    exit 1
-fi
 
 echo "📦  Publishing package..."
 
-NPM_ARGS=( --workspace govuk-frontend )
+NPM_ARGS=( --workspace @cautionyourblast/govuk-frontend )
 [ $NPM_TAG = "latest" ] || NPM_ARGS+=( --tag $NPM_TAG )
 
 # Try publishing
@@ -55,7 +45,7 @@ npm publish "${NPM_ARGS[@]}"
 echo "🗒 Package published!"
 
 # Extract tag version from ./packages/govuk-frontend/package.json
-ALL_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)
+ALL_PACKAGE_VERSION=$(npm run version --silent --workspace @cautionyourblast/govuk-frontend)
 TAG="v$ALL_PACKAGE_VERSION"
 
 if [ $(git tag -l "$TAG") ]; then

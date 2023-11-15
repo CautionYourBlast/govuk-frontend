@@ -1,7 +1,7 @@
 {
-  "name": "govuk-frontend",
+  "name": "@cautionyourblast/govuk-frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "5.0.0-internal.0",
+  "version": "5.0.0-cyb.0",
   "main": "dist/govuk/all.bundle.js",
   "module": "dist/govuk/all.mjs",
   "sass": "dist/govuk/all.scss",
@@ -32,10 +32,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alphagov/govuk-frontend.git"
+    "url": "https://github.com/CautionYourBlast/govuk-frontend.git"
   },
   "bugs": {
-    "url": "https://github.com/alphagov/govuk-frontend/issues"
+    "url": "https://github.com/CautionYourBlast/govuk-frontend/issues"
   },
   "homepage": "https://frontend.design-system.service.gov.uk/",
   "keywords": [
@@ -52,7 +52,6 @@
     "build": "npm run build:package",
     "build:package": "gulp build:package --color",
     "build:release": "gulp build:release --color",
-    "build:stats": "npm run stats --workspace @govuk-frontend/stats",
     "build:types": "tsc --build tsconfig.build.json",
     "clean": "npm run clean:package",
     "clean:package": "del-cli *.tsbuildinfo dist govuk-prototype-kit.config.json",

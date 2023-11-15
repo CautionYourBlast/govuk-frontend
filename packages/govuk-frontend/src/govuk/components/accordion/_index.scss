@@ -191,7 +191,7 @@
       border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
 
       // Visually separate the section from the one underneath when user changes colours in their
-      // browser. See https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
+      // browser. See https://github.com/CautionYourBlast/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
 
       color: $govuk-text-colour;
@@ -259,7 +259,7 @@
 
     // Remove the transparent border when the section is expanded to make it clear that the heading
     // relates to the content below. Adjust padding to maintain the height of the element.
-    // See https://github.com/alphagov/govuk-frontend/pull/2257#issuecomment-951920798
+    // See https://github.com/CautionYourBlast/govuk-frontend/pull/2257#issuecomment-951920798
     .govuk-accordion__section--expanded .govuk-accordion__section-button {
       padding-bottom: govuk-spacing(3);
       border-bottom: 0;

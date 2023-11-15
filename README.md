@@ -1,15 +1,15 @@
 GOV.UK Frontend ·
-[![Build Status](https://github.com/alphagov/govuk-frontend/workflows/Tests/badge.svg)](https://github.com/alphagov/govuk-frontend/actions?query=workflow%3ATests+branch%3Amain)
+[![Build Status](https://github.com/CautionYourBlast/govuk-frontend/workflows/Tests/badge.svg)](https://github.com/CautionYourBlast/govuk-frontend/actions?query=workflow%3ATests+branch%3Amain)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
 > **Warning**
 >
-> We’re currently implementing extensive changes to our code for [our next major version](https://github.com/alphagov/govuk-frontend/milestone/46).
+> We’re currently implementing extensive changes to our code for [our next major version](https://github.com/CautionYourBlast/govuk-frontend/milestone/46).
 >
 > While we're making changes, only fork this repository if necessary. This is to limit how often you will need to update your fork to keep up to date.
 >
-> If you're fixing a bug in our previous releases, branch off the [latest 4.x tag](https://github.com/alphagov/govuk-frontend/tags) instead.
+> If you're fixing a bug in our previous releases, branch off the [latest 4.x tag](https://github.com/CautionYourBlast/govuk-frontend/tags) instead.
 
 GOV.UK Frontend contains the code you need to start building a user interface
 for government platforms and services.
@@ -64,13 +64,13 @@ You can also read the [accessibility statement for the GOV.UK Design System](htt
 
 ### Accessibility warnings
 
-If you get a warning from a linter or accessibility checker, check our list of [issues you should not need to fix](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851).
+If you get a warning from a linter or accessibility checker, check our list of [issues you should not need to fix](https://github.com/CautionYourBlast/govuk-frontend/issues/1280#issuecomment-509588851).
 
 ## Security
 
 GDS is an advocate of responsible vulnerability disclosure. If you’ve found a vulnerability, we would like to know so we can fix it.
 
-For full details on how to tell us about vulnerabilities, [see our security policy](https://github.com/alphagov/govuk-frontend/security/policy).
+For full details on how to tell us about vulnerabilities, [see our security policy](https://github.com/CautionYourBlast/govuk-frontend/security/policy).
 
 ## Licence
 

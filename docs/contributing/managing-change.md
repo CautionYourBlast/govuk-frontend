@@ -63,7 +63,7 @@ Use the `_warning` mixin when deprecating a mixin:
 /// XL headings
 ///
 /// @deprecated Use govuk-typography-responsive($size: 80) instead.
-///   See https://github.com/alphagov/govuk-frontend/issues/1234
+///   See https://github.com/CautionYourBlast/govuk-frontend/issues/1234
 @mixin govuk-heading-xl {
   @include _warning("heading-xl", "govuk-heading-xl is deprecated. Use govuk-typography-responsive(80) instead.");
   @include govuk-typography-responsive($size: 80);
@@ -78,7 +78,7 @@ Mixins cannot be invoked within functions, so we use the `_should-warn` and `_wa
 /// A contrived example function that takes a number and multiplies it by 2.
 ///
 /// @deprecated Use govuk-multiply(number, 2) instead.
-///   See https://github.com/alphagov/govuk-frontend/issues/1234
+///   See https://github.com/CautionYourBlast/govuk-frontend/issues/1234
 @function govuk-double($number) {
   @if _should-warn("double") {
     @warn _warning-message("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.");

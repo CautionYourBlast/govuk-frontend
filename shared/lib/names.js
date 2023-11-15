@@ -114,7 +114,7 @@ function packageResolveToPath(packageEntry, { modulePath, moduleRoot } = {}) {
  * Wraps {@link packageResolveToPath} to allow the appended `modulePath` to
  * include unresolvable paths, globs or files that are not yet built
  *
- * {@link https://github.com/alphagov/govuk-frontend/issues/3755}
+ * {@link https://github.com/CautionYourBlast/govuk-frontend/issues/3755}
  *
  * @example
  * Resolving components relative to a default package entry

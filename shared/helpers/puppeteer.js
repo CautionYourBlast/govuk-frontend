@@ -44,7 +44,7 @@ async function axe(page, overrides = {}) {
   const rules = {
     /**
      * Ignore 'Some page content is not contained by landmarks'
-     * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
+     * {@link https://github.com/CautionYourBlast/govuk-frontend/issues/1604}
      */
     region: { enabled: false },
     ...overrides

@@ -12,7 +12,7 @@ module.exports = {
   emit: 'both',
   name: 'govuk-frontend',
   sourceLinkTemplate:
-    'https://github.com/alphagov/govuk-frontend/blob/{gitRevision}/{path}#L{line}',
+    'https://github.com/CautionYourBlast/govuk-frontend/blob/{gitRevision}/{path}#L{line}',
 
   // Configure paths
   basePath: join(packageNameToPath('govuk-frontend'), 'src'),

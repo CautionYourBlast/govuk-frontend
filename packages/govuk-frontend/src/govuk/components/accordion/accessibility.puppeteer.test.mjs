@@ -10,7 +10,7 @@ describe('/components/accordion', () => {
        * Ignore 'aria-labelledby attribute cannot be used on a div with
        * no valid role attribute'
        *
-       * {@link https://github.com/alphagov/govuk-frontend/issues/2472}
+       * {@link https://github.com/CautionYourBlast/govuk-frontend/issues/2472}
        */
       'aria-prohibited-attr': { enabled: false }
     }

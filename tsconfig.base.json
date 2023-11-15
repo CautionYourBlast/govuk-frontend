@@ -14,14 +14,14 @@
     "target": "ESNext",
     "types": [],
     "paths": {
-      "@govuk-frontend/config": ["./shared/config/index.js"],
-      "@govuk-frontend/helpers": ["./shared/helpers/index.js"],
-      "@govuk-frontend/helpers/*": ["./shared/helpers/*.js"],
-      "@govuk-frontend/helpers/jest/*": ["./shared/helpers/jest/*"],
-      "@govuk-frontend/lib": ["./shared/lib/index.js"],
-      "@govuk-frontend/lib/*": ["./shared/lib/*.js"],
-      "@govuk-frontend/stats": ["./shared/stats/src/index.mjs"],
-      "@govuk-frontend/tasks": ["./shared/tasks/index.mjs"],
+      "@cautionyourblast/config": ["./shared/config/index.js"],
+      "@cautionyourblast/helpers": ["./shared/helpers/index.js"],
+      "@cautionyourblast/helpers/*": ["./shared/helpers/*.js"],
+      "@cautionyourblast/helpers/jest/*": ["./shared/helpers/jest/*"],
+      "@cautionyourblast/lib": ["./shared/lib/index.js"],
+      "@cautionyourblast/lib/*": ["./shared/lib/*.js"],
+      "@cautionyourblast/stats": ["./shared/stats/src/index.mjs"],
+      "@cautionyourblast/tasks": ["./shared/tasks/index.mjs"],
       "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
     }
   },

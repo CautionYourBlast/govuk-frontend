@@ -9,7 +9,7 @@ describe('/components/radios', () => {
       /**
        * Ignore 'ARIA attribute is not allowed: aria-expanded="false"'
        *
-       * {@link https://github.com/alphagov/govuk-frontend/issues/979}
+       * {@link https://github.com/CautionYourBlast/govuk-frontend/issues/979}
        */
       'aria-allowed-attr': { enabled: false }
     }

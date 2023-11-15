@@ -1,7 +1,7 @@
 import {
   componentNameToClassName,
   componentNameToConfigName
-} from '@govuk-frontend/lib/names'
+} from '@cautionyourblast/lib/names'
 
 import * as GOVUKFrontend from './all.mjs'
 

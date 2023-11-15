@@ -573,7 +573,7 @@ export class Accordion extends GOVUKFrontendComponent {
    *
    * Adding punctuation to the button can also improve its general semantics by
    * dividing its contents into thematic chunks. See
-   * https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+   * https://github.com/CautionYourBlast/govuk-frontend/issues/2327#issuecomment-922957442
    *
    * @private
    * @returns {Element} DOM element

@@ -259,7 +259,7 @@ export class I18n {
    * independently of one another.
    *
    * Code to support more languages can be found in the i18n spike:
-   * {@link https://github.com/alphagov/govuk-frontend/blob/spike-i18n-support/src/govuk/i18n.mjs}
+   * {@link https://github.com/CautionYourBlast/govuk-frontend/blob/spike-i18n-support/src/govuk/i18n.mjs}
    *
    * Languages currently supported:
    *

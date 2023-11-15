@@ -136,7 +136,7 @@ You must specify the file extension when using the import keyword.
 
 Avoid using namespace imports (`import * as namespace`) in code bundled for CommonJS and other formats as this can prevent "tree shaking" optimisations.
 
-Prefer named exports over default exports to avoid compatibility issues with transpiler "synthetic default" as discussed in: https://github.com/alphagov/govuk-frontend/issues/2829
+Prefer named exports over default exports to avoid compatibility issues with transpiler "synthetic default" as discussed in: https://github.com/CautionYourBlast/govuk-frontend/issues/2829
 
 ## Throwing errors
 

@@ -2,7 +2,7 @@
 
 GitHub Actions lints Sass and JavaScript, runs unit and functional tests with Node.js, and generates snapshots for [visual regression testing](#visual-regression-testing-with-percy).
 
-See the [GitHub Actions **Tests** workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/tests.yml) for more information.
+See the [GitHub Actions **Tests** workflow](https://github.com/CautionYourBlast/govuk-frontend/actions/workflows/tests.yml) for more information.
 
 ## Testing terminology
 

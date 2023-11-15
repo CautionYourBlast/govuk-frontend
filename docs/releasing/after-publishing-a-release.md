@@ -4,7 +4,7 @@ Once we've published a new release of GOV.UK Frontend there are a number of thin
 
 ## Update our repos to use the new release
 
-Developers should update [govuk-design-system](https://github.com/alphagov/govuk-design-system) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to use the new release. When updating the design system, you should also test any new or updated guidance that relate to the new release and publish them along with the version update.
+Developers should update [govuk-design-system](https://github.com/alphagov/govuk-design-system) and [govuk-frontend-docs](https://github.com/CautionYourBlast/govuk-frontend-docs) to use the new release. When updating the design system, you should also test any new or updated guidance that relate to the new release and publish them along with the version update.
 
 ## Let the community know about the new release
 
@@ -21,7 +21,7 @@ The release email should:
 - components or styles affected (if possible)
 - thanks to any major contributors (if possible, include name and organisation)
 
-A release email will typically end with a link to the version's [release notes](https://github.com/alphagov/govuk-frontend/releases), and a call-to-action button to the [update npm how-to page](https://frontend.design-system.service.gov.uk/updating-with-npm/#update-using-node-js-package-manager-npm).
+A release email will typically end with a link to the version's [release notes](https://github.com/CautionYourBlast/govuk-frontend/releases), and a call-to-action button to the [update npm how-to page](https://frontend.design-system.service.gov.uk/updating-with-npm/#update-using-node-js-package-manager-npm).
 
 For example, see the [release email for GOV.UK Frontend 4.4.0](https://us1.admin.mailchimp.com/campaigns/show?id=10053738).
 

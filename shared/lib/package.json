@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@govuk-frontend/lib",
+  "name": "@cautionyourblast/lib",
   "description": "GOV.UK Frontend shared library",
   "main": "index.js",
   "exports": {

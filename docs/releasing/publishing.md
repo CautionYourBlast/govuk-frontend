@@ -71,7 +71,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 ## Create a release on Github
 
-You can view the tag created during step 10 of creating the new version in the [Github interface](https://github.com/alphagov/govuk-frontend/tags). To create a new Github release, do the following:
+You can view the tag created during step 10 of creating the new version in the [Github interface](https://github.com/CautionYourBlast/govuk-frontend/tags). To create a new Github release, do the following:
 
 1. Select the latest tag
 2. Press **Create release from tag**

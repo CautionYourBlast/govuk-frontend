@@ -6,6 +6,6 @@
 /**
  * GOV.UK Frontend release version
  *
- * {@link https://github.com/alphagov/govuk-frontend/releases}
+ * {@link https://github.com/CautionYourBlast/govuk-frontend/releases}
  */
 export const version = 'development'
