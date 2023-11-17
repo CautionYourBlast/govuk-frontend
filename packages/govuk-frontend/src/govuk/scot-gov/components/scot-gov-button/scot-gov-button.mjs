@@ -11,7 +11,7 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  *
  * @preserve
  */
-export class ScotGovButton extends GOVUKFrontendComponent {
+export class scotGovButton extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -45,7 +45,7 @@ export class ScotGovButton extends GOVUKFrontendComponent {
     this.$module = $module
 
     this.config = mergeConfigs(
-      ScotGovButton.defaults,
+      scotGovButton.defaults,
       config,
       normaliseDataset($module.dataset)
     )

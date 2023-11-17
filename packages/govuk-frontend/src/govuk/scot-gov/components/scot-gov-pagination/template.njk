@@ -1,32 +1,51 @@
 {% set blockLevel = not params.items and (params.next or params.previous) %}
 
 <nav class="ds_pagination {{- ' ' + params.classes if params.classes }} {{- ' ds_pagination--block' if blockLevel }}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
-  {%- if params.previous and params.previous.href -%}
-     <div class="ds_pagination__prev">
-      <a class="ds_link ds_pagination__link ds_pagination__link--icon" href="{{ params.previous.href }}" rel="prev" {%- for attribute, value in params.previous.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
-        <svg class="ds_icon" aria-hidden="true" role="img">
-          <use href="../../images/icons/icons.stack.svg#chevron_left"></use>
-        </svg>
-        <span class="ds_pagination__link-label {{- ' ds_pagination__link-label--decorated' if blockLevel and not params.previous.labelText }}">
-          {%- if params.previous.html or params.previous.text -%}
-            {{ params.previous.html | safe if params.previous.html else params.previous.text }}
-          {%- else -%}
-            <span class="ds_pagination__link-label">Previous</span>
-          {%- endif -%}
-        </span>
-        {%- if params.previous.labelText and blockLevel -%}
-          <span class="ds_visually-hidden">:</span>
-          <span class="ds_pagination__link-label">{{ params.previous.labelText }}</span>
-        {%- endif -%}
-      </a>
-    </div>
-  {% endif %}
-
   {%- if params.items -%}
     <ul class="ds_pagination__list">
       {%- for item in params.items -%}
         {%- if item.ellipsis -%}
           <li class="ds_pagination__item ds_pagination__item--ellipses">&ctdot;</li>
+        {%- elif item.previous -%}
+          <li class="ds_pagination__item">
+            <a class="ds_link ds_pagination__link ds_pagination__link--icon" href="{{ params.previous.href }}" rel="prev" {%- for attribute, value in params.previous.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+              <svg class="ds_icon" role="img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" aria-hidden="true" focusable="false">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+              <span class="ds_pagination__link-label {{- ' ds_pagination__link-label--decorated' if blockLevel and not params.previous.labelText }}">
+                {%- if params.previous.html or params.previous.text -%}
+                  {{ params.previous.html | safe if params.previous.html else params.previous.text }}
+                {%- else -%}
+                  <span class="ds_pagination__link-label">Previous</span>
+                {%- endif -%}
+              </span>
+              {%- if params.previous.labelText and blockLevel -%}
+                {# <span class="ds_visually-hidden">:</span> #}
+                <span class="ds_pagination__link-label">{{ params.previous.labelText }}</span>
+              {%- endif -%}
+            </a>
+          </li>
+        {%-elif item.next-%}
+          <li class="ds_pagination__item">
+            <a class="ds_link ds_pagination__link ds_pagination__link--icon" href="{{ params.next.href }}" rel="next" {%- for attribute, value in params.next.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+              <span class="ds_pagination__link-label {{- ' ds_pagination__link-label--decorated' if blockLevel and not params.next.labelText }}">
+                {%- if params.next.html or params.next.text -%}
+                  {{ params.next.html | safe if params.next.html else params.next.text }}
+                {%- else -%}
+                  <span class="ds_pagination__link-label">Next</span>
+                {%- endif -%}
+              </span>
+              {%- if params.next.labelText and blockLevel -%}
+                {# <span class="ds_visually-hidden">:</span> #}
+                <span class="ds_pagination__link-label">{{ params.next.labelText }}</span>
+              {%- endif -%}
+              <svg class="ds_icon" role="img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" aria-hidden="true" focusable="false">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </a>
+          </li>
         {%- elseif item.number -%}
           <li class="ds_pagination__item {{- ' ds_pagination__item--current' if item.current }}">
             <a class="ds_link ds_pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}" {%- if item.current %} aria-current="page" {%- endif -%} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
@@ -36,34 +55,5 @@
         {%- endif -%}
       {%- endfor -%}
     </ul>
-  {%- endif -%}
-
-  {%- if params.next and params.next.href -%}
-    <div class="ds_pagination__next">
-      <a class="ds_link ds_pagination__link ds_pagination__link--icon" href="{{ params.next.href }}" rel="next" {%- for attribute, value in params.next.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
-        {%- if blockLevel -%}
-          {{- nextArrow | safe -}}
-        {%- endif %}
-        <span class="ds_pagination__link-label {{- ' ds_pagination__link-label--decorated' if blockLevel and not params.next.labelText }}">
-          {%- if params.next.html or params.next.text -%}
-            {{ params.next.html | safe if params.next.html else params.next.text }}
-          {%- else -%}
-            <span class="ds_pagination__link-label">Next</span>
-          {%- endif -%}
-        </span>
-        {%- if params.next.labelText and blockLevel -%}
-          <span class="ds_visually-hidden">:</span>
-          <span class="ds_pagination__link-label">{{ params.next.labelText }}</span>
-        {%- endif -%}
-        {%- if not blockLevel -%}
-          {{- nextArrow | safe -}}
-        {%- endif -%}
-      </a>
-    </div>
-    {%- set nextArrow -%}
-      <svg class="ds_icon" aria-hidden="true" role="img">
-        <use href="../../images/icons/icons.stack.svg#chevron_right"></use>
-      </svg>
-    {%- endset -%}
   {%- endif -%}
 </nav>

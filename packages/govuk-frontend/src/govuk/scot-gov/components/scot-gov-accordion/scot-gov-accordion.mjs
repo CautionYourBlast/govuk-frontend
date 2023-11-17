@@ -3,7 +3,7 @@ import elementIdModifier from '../../base/tools/id-modifier/id-modifier';
 
 'use strict';
 
-class Accordion {
+class scotGovAccordion {
     constructor(accordion) {
         this.accordion = accordion;
         this.items = [].slice.call(accordion.querySelectorAll('.ds_accordion-item'));
@@ -159,4 +159,4 @@ class Accordion {
     }
 }
 
-export default Accordion;
+export default scotGovAccordion;

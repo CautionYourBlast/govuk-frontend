@@ -2,7 +2,7 @@
 
 'use strict';
 
-class CharacterCount {
+class scotGovCharacterCount {
     constructor(field) {
         this.field = field;
         this.inputElement = this.field.querySelector('input, textarea');
@@ -99,4 +99,4 @@ class CharacterCount {
     }
 }
 
-export default CharacterCount;
+export default scotGovCharacterCount;

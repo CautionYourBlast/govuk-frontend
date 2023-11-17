@@ -1,8 +1,9 @@
 import page from './base/objects/page/page';
-import Accordion from './components/scot-gov-accordion/scot-gov-accordion.mjs';
-import AspectBox from './components/aspect-box/aspect-box-fallback';
-import Autocomplete from './components/autocomplete/autocomplete';
-import BackToTop from './components/back-to-top/back-to-top';
+import scotGovAccordion from './components/scot-gov-Accordion/scot-gov-Accordion.mjs';
+//import AspectBox from './components/aspect-box/aspect-box-fallback';
+//import Autocomplete from './components/autocomplete/autocomplete';
+//import BackToTop from './components/back-to-top/back-to-top';
+import { scotGovButton } from './components/scot-gov-button/scot-gov-button.mjs'
 import CharacterCount from './forms/character-count/character-count';
 import Checkboxes from './forms/checkbox/checkboxes';
 import CookieNotification from './components/cookie-notification/cookie-notification';
@@ -15,8 +16,8 @@ import NotificationBanner from './components/scot-gov-notification-banner/notifi
 import SideNavigation from './components/side-navigation/side-navigation';
 import skipLinks from './components/skip-links/skip-links';
 import StepNavigation from './components/step-navigation/step-navigation';
-import Tabs from './components/scot-gov-tabs/tabs';
-import TabsNavigation from './components/scot-gov-tabs/scot-gov-tabs-navigation';
+import scotGovTabs from './components/scot-gov-Tabs/scot-gov-tabs.mjsTabs';
+import scotGovTabsNavigation from './components/scot-gov-Tabs/scot-gov-Tabs-navigation.mjs';
 
 import tracking from './base/tools/tracking/tracking';
 import version from './version';
@@ -26,10 +27,11 @@ const base = {
 };
 
 const components = {
-    Accordion,
-    AspectBox,
-    Autocomplete,
-    BackToTop,
+    scotGovAccordion,
+    //AspectBox,
+    //Autocomplete,
+    //BackToTop,
+    scotGovButton,
     CharacterCount,
     Checkboxes,
     CookieNotification,
@@ -42,8 +44,8 @@ const components = {
     SideNavigation,
     skipLinks,
     StepNavigation,
-    Tabs,
-    TabsNavigation
+    scotGovTabs,
+    scotGovTabsNavigation
 };
 
 // Similar to gov.uk approach, allow DS to be applied in a more targeted way than the whole document if needed
@@ -51,17 +53,20 @@ const components = {
 function initAll(scope = document) {
     page.init();
 
-    const accordions = [].slice.call(scope.querySelectorAll('[data-module="ds-accordion"]'));
-    accordions.forEach(accordion => new Accordion(accordion).init());
+    const scotGovAccordions = [].slice.call(scope.querySelectorAll('[data-module="ds-scot-gov-accordion"]'));
+    scotGovAccordions.forEach(scotGovAccordion => new scotGovAccordion(scotGovAccordion).init());
 
-    const aspectBoxes = [].slice.call(document.querySelectorAll('.ds_aspect-box:not(.ds_aspect-box--fallback)'));
-    aspectBoxes.forEach(aspectBox => new AspectBox(aspectBox).init());
+    //const aspectBoxes = [].slice.call(document.querySelectorAll('.ds_aspect-box:not(.ds_aspect-box--fallback)'));
+    //aspectBoxes.forEach(aspectBox => new AspectBox(aspectBox).init());
 
-    const backToTopEl = scope.querySelector('[data-module="ds-back-to-top"]');
-    if (backToTopEl) {
-        const backToTop = new BackToTop(backToTopEl);
-        backToTop.init();
-    }
+    //const backToTopEl = scope.querySelector('[data-module="ds-back-to-top"]');
+    //if (backToTopEl) {
+    //    const backToTop = new BackToTop(backToTopEl);
+    //    backToTop.init();
+    //}
+   
+    const scotGovButtons = [].slice.call(document.querySelectorAll('[data-module="ds-scot-gov-button"]'));
+    scotGovButtons.forEach(scotGovButton => new scotGovButton(scotGovButton).init());
 
     const characterCountModules = [].slice.call(scope.querySelectorAll('[data-module="ds-character-count"]'));
     characterCountModules.forEach(characterCount => new CharacterCount(characterCount).init());
@@ -109,11 +114,11 @@ function initAll(scope = document) {
         mobileTables.init();
     }
 
-    const tabSets = [].slice.call(document.querySelectorAll('[data-module="ds-tabs"]'));
-    tabSets.forEach(tabSet => new Tabs(tabSet).init());
+    const scotGovTabsets = [].slice.call(document.querySelectorAll('[data-module="ds-scotGovTabs"]'));
+    scotGovTabsets.forEach(scotGovTabset => new scotGovTabs(scotGovTabset).init());
 
-    const tabNavigationSets = [].slice.call(document.querySelectorAll('[data-module="ds-tabs-navigation"]'));
-    tabNavigationSets.forEach(tabNavigationSet => new TabsNavigation(tabNavigationSet).init());
+    const tabNavigationSets = [].slice.call(document.querySelectorAll('[data-module="ds-scotGovTabs-navigation"]'));
+    tabNavigationSets.forEach(tabNavigationSet => new scotGovTabsNavigation(tabNavigationSet).init());
 
     tracking.init();
 }
@@ -127,10 +132,11 @@ window.DS.version = version;
 
 export {
     initAll,
-    Accordion,
-    AspectBox,
-    Autocomplete,
-    BackToTop,
+    scotGovAccordion,
+    //AspectBox,
+    //Autocomplete,
+    //BackToTop,
+    scotGovButton,
     CharacterCount,
     Checkboxes,
     CookieNotification,
@@ -144,6 +150,6 @@ export {
     SideNavigation,
     skipLinks,
     StepNavigation,
-    Tabs,
-    TabsNavigation
+    scotGovTabs,
+    scotGovTabsNavigation
 };

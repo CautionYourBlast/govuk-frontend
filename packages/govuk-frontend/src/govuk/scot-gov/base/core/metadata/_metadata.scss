@@ -1,0 +1,62 @@
+/*------------------------------------*\
+    PAGE METADATA
+\*------------------------------------*/
+
+.ds_metadata {
+    @include ds_small-size--fixed;
+    margin: 0;
+    overflow: hidden;
+
+    &__key {
+        display: inline;
+        font-weight: normal;
+
+        &::after {
+            content: ':';
+        }
+    }
+
+    &__value {
+        display: inline;
+        font-weight: $bold;
+        margin-left: 0;
+
+        a {
+            font-weight: $normal;
+        }
+    }
+}
+
+/**
+ * Alternative display collapsing the metadata into a single line
+ */
+.ds_metadata--inline {
+    @include ds_tiny-size;
+
+    color: $ds_colour__text--secondary;
+    margin-bottom: px-to-rem(8px);
+
+    .ds_metadata__item {
+        display: inline;
+        position: relative;
+    }
+
+    .ds_metadata__item:not(:first-child) {
+        margin-left: 0.25em;
+        padding-left: calc(0.5em + 1px);
+
+        &::before {
+            background: currentColor;
+            content: '';
+            height: calc(1em - 1px);
+            left: 0;
+            position: absolute;
+            top: 2px;
+            width: 1px;
+        }
+    }
+
+    .ds_metadata__value {
+        font-weight: $normal;
+    }
+}

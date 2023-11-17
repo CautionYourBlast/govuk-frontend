@@ -253,4 +253,4 @@ class scotGovTabs {
     }
 }
 
-export default scoTabs;
+export default scotGovTabs;

@@ -119,5 +119,8 @@
     "sassdoc-extras@^2": {
       "marked": "^0.8.2"
     }
+  },
+  "dependencies": {
+    "karma": "^6.4.2"
   }
 }

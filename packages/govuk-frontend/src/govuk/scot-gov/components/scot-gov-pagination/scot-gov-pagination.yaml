@@ -94,11 +94,13 @@ params:
 examples:
   - name: default
     options:
-      previous:
-        href: '/previous'
-      next:
-        href: '/next'
+      # previous:
+      #   href: '/previous'
+      # next:
+      #   href: '/next'
       items:
+        - previous: true
+          href: '/previous'
         - number: 1
           href: '/page/1'
         - number: 2
@@ -106,6 +108,8 @@ examples:
           current: true
         - number: 3
           href: '/page/3'
+        - next: true
+          href: '/next'
   - name: with custom navigation landmark
     options:
       previous:

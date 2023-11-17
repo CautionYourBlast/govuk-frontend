@@ -1,5 +1,5 @@
 {% from "../scot-gov-error-message/macro.njk" import scotGovErrorMessage -%}
-{% from "../../../components/fieldset/macro.njk" import govukFieldset %}
+{% from "../scot-gov-fieldset/macro.njk" import scotGovFieldset %}
 {% from "../scot-gov-hint/macro.njk" import scotGovHint %}
 {% from "../scot-gov-label/macro.njk" import scotGovLabel %}
 
@@ -36,9 +36,8 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <div class="ds_field-group {%- if params.classes %} {{ params.classes }}{% endif %}"
-    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
-    data-module="ds_radio">
+  <div class="ds_fieldset {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
     {% for item in params.items %}
       {% if item %}
         {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
@@ -54,12 +53,12 @@
         {%- endif -%}
         {% set conditionalId = "conditional-" + id %}
         {%- if item.divider %}
-        <div class="ds_radio">{{ item.divider }}</div>
+        <div>{{ item.divider }}</div>
         {%- else %}
         {% set isChecked = item.checked | default((item.value == params.value and item.checked != false) if params.value else false, true) %}
         {% set hasHint = true if item.hint.text or item.hint.html %}
         {% set itemHintId = id + '-item-hint' %}
-        <div class="ds_radio__item">
+        <div class="ds_radio">
           <input class="ds_radio__input" id="{{ id }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
           {{-" checked" if isChecked }}
           {{-" disabled" if item.disabled }}
@@ -94,9 +93,9 @@
   </div>
 {% endset -%}
 
-<div class="ds_form-group {%- if params.errorMessage %} ds_form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+<div class="ds_field-group {%- if params.errorMessage %} ds_field-group--error{% endif %} {%- if params.fieldGroup.classes %} {{ params.fieldGroup.classes }}{% endif %}">
 {% if params.fieldset %}
-  {% call govukFieldset({
+  {% call scotGovFieldset({
     describedBy: describedBy,
     classes: params.fieldset.classes,
     attributes: params.fieldset.attributes,

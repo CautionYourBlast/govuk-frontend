@@ -65,10 +65,10 @@ describe('Character count', () => {
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
 
-    it('renders with formGroup', () => {
-      const $ = render('character-count', examples['formGroup with classes'])
+    it('renders with fieldGroup', () => {
+      const $ = render('character-count', examples['fieldGroup with classes'])
 
-      const $component = $('.ds_form-group')
+      const $component = $('.ds_field-group')
       expect(
         $component.hasClass('app-character-count--custom-modifier')
       ).toBeTruthy()
@@ -216,7 +216,7 @@ describe('Character count', () => {
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.ds_form-group > .ds_js-character-count')
+      const $component = $('.ds_field-group > .ds_js-character-count')
       expect($component.length).toBeTruthy()
     })
 

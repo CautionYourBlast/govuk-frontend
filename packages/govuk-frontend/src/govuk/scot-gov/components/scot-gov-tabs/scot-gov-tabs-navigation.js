@@ -32,7 +32,7 @@ class scotGovTabsNavigation {
             const navButton = document.createElement('button');
             const tabListId = this.tabList.getAttribute('id');
             navButton.classList.add('ds_tabs__toggle');
-            navButton.setAttribute('aria-expanded', false);
+            navButton.setAttribute('aria-expanded', "false");
             navButton.innerHTML = this.tabTitle.innerHTML;
             navButton.setAttribute('aria-controls', tabListId);
             this.tabNavigation.insertBefore(navButton, this.tabList);
@@ -40,9 +40,9 @@ class scotGovTabsNavigation {
             // Event listener for button toggle
             navButton.addEventListener('click', () => {
                 if (navButton.getAttribute('aria-expanded') === 'true') {
-                    navButton.setAttribute('aria-expanded', false);
+                    navButton.setAttribute('aria-expanded', "false");
                 } else {
-                    navButton.setAttribute('aria-expanded', true);
+                    navButton.setAttribute('aria-expanded', "true");
                 }
             });
 

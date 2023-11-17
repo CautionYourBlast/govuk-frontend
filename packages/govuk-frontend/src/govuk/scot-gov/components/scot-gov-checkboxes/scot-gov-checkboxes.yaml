@@ -125,7 +125,7 @@ accessibilityCriteria: |
 examples:
   - name: default
     options:
-      name: nationality
+      name: example default
       items:
         - value: british
           text: British

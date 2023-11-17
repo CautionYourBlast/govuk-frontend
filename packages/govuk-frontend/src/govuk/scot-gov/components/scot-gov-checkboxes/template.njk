@@ -1,5 +1,5 @@
 {% from "../scot-gov-error-message/macro.njk" import scotGovErrorMessage -%}
-{% from "../../../components/fieldset/macro.njk" import govukFieldset %}
+{% from "../scot-gov-fieldset/macro.njk" import scotGovFieldset %}
 {% from "../scot-gov-hint/macro.njk" import scotGovHint %}
 {% from "../scot-gov-label/macro.njk" import scotGovLabel %}
 
@@ -42,9 +42,9 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <div class="ds_checkboxes {%- if params.classes %} {{ params.classes }}{% endif %}"
-    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
-    data-module="ds_checkboxes">
+<div class="ds_fieldset" aria-describedby="ds_hint">
+  <div class="ds_field-group {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
     {% for item in params.items %}
       {% if item %}
         {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
@@ -79,14 +79,14 @@
             {{ scotGovLabel({
               html: item.html,
               text: item.text,
-              classes: 'ds_checkboxes__label' + (' ' + item.label.classes if item.label.classes),
+              classes: 'ds_checkbox__label' + (' ' + item.label.classes if item.label.classes),
               attributes: item.label.attributes,
               for: id
             }) | indent(6) | trim }}
             {% if hasHint %}
             {{ scotGovHint({
               id: itemHintId,
-              classes: 'ds_checkboxes__hint' + (' ' + item.hint.classes if item.hint.classes),
+              classes: 'ds_checkbox__hint' + (' ' + item.hint.classes if item.hint.classes),
               attributes: item.hint.attributes,
               html: item.hint.html,
               text: item.hint.text
@@ -94,7 +94,7 @@
             {% endif %}
           </div>
           {% if item.conditional.html %}
-            <div class="ds_checkboxes__conditional{% if not isChecked %} ds_checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+            <div class="ds_checkbox__conditional{% if not isChecked %} ds_checkbox__conditional--hidden{% endif %}" id="{{ conditionalId }}">
               {{ item.conditional.html | safe }}
             </div>
           {% endif %}
@@ -106,7 +106,7 @@
 
 <div class="ds_field-group {%- if params.errorMessage %} ds_field-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
 {% if params.fieldset %}
-  {% call govukFieldset({
+  {% call scotGovFieldset({
     describedBy: describedBy,
     classes: params.fieldset.classes,
     attributes: params.fieldset.attributes,
@@ -118,3 +118,5 @@
   {{ innerHtml | trim | safe }}
 {% endif %}
 </div>
+
+    {# data-module="ds_checkboxes" #}
