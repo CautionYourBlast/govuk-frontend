@@ -106,6 +106,7 @@ examples:
 
   - name: accepted confirmation banner
     options:
+      classes: ds_colour__state--positive
       messages:
         - text: Your cookie preferences have been saved. You have accepted cookies.
           role: alert

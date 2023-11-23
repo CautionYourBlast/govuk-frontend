@@ -1,5 +1,5 @@
 {# Set classes for this component #}
-{%- set classNames = "ds_button" -%}
+{# {%- set classNames = "ds_button" -%} #}
 
 {%- if params.classes %}
   {% set classNames = classNames + " " + params.classes %}
@@ -47,7 +47,7 @@ treat it as an interactive element - without this it will be
 </a>
 
 {%- elseif element == 'button' %}
-<button {%- if params.value %} class="ds_button" value="{{ params.value }}"{% endif %} type="{{ params.type if params.type else 'submit' }}" {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
+<button {%- if params.value %} class="{{ classNames }}" value="{{ params.value }}"{% endif %} type="{{ params.type if params.type else 'submit' }}" {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
   {{ params.html | safe if params.html else params.text }}
 {# Indentation is intentional to output HTML nicely #}
 {{- iconHtml | safe | trim | indent(2, true) if iconHtml -}}

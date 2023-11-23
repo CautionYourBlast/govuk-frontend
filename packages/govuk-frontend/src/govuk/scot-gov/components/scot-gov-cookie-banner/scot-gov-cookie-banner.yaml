@@ -102,18 +102,19 @@ examples:
               type: submit
               name: cookiesreject
               value: reject
-              classes: 'ds_button ds_button--small ds_button--secondary'
+              params:
+              classes: 'ds_button ds_button--small ds_button--secondary js-accept-essential-cookies'
             - text: View cookie preferences
               href: /cookie-preferences
 
   - name: accepted confirmation banner
     options:
       messages:
-        - text: Your cookie preferences have been saved. You have accepted cookies.
+        - text: Your cookie preferences have been saved. You can 
+                  <a href="/cookies/">change your cookie settings</a> 
+                at any time.
+          classes: ds_notification ds_notification--cookie-success
           role: alert
-          actions:
-            - text: Hide cookie message
-              type: button
 
   - name: rejected confirmation banner
     options:

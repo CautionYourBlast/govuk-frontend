@@ -2,8 +2,11 @@
 
 'use strict';
 
-class scotGovCharacterCount {
+import { GOVUKFrontendComponent } from "../../../govuk-frontend-component.mjs";
+
+class scotGovCharacterCount extends GOVUKFrontendComponent{
     constructor(field) {
+        super()
         this.field = field;
         this.inputElement = this.field.querySelector('input, textarea');
         this.threshold = this.field.dataset.threshold ? this.field.dataset.threshold * 0.01 : 0;
